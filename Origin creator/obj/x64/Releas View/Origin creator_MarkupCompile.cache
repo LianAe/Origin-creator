@@ -4,11 +4,11 @@
 winexe
 C#
 .cs
-C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\Release\
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\
 Origin_creator
 none
 false
-TRACE
+
 C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\App.xaml
 21266986065
 
@@ -16,5 +16,5 @@ C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\App.xaml
 18-1542596412
 MainWindow.xaml;OriginMainMenu.xaml;
 
-True
+False
 

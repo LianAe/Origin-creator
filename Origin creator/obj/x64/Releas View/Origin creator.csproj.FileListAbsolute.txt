@@ -1,0 +1,34 @@
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\Origin creator.exe.config
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\Origin creator.exe
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\Xceed.Wpf.AvalonDock.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\Xceed.Wpf.Toolkit.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\x64\Releas View\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\Origin creator.csproj.AssemblyReference.cache
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\MainWindow.g.cs
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\OriginMainMenu.g.cs
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\App.g.cs
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\GeneratedInternalTypeHelper.g.cs
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\Origin creator_MarkupCompile.cache
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\Origin creator_MarkupCompile.lref
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\MainWindow.baml
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\OriginMainMenu.baml
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\Origin creator.g.resources
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\Origin_creator.Properties.Resources.resources
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\Origin creator.csproj.GenerateResource.cache
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\Origin creator.csproj.CoreCompileInputs.cache
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\Origin creator.csproj.CopyComplete
+C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Releas View\Origin creator.exe
