@@ -4,17 +4,17 @@
 winexe
 C#
 .cs
-C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Debug\
+C:\Users\lianaeschlimann\source\repos\LianAe\Origin-creator\Origin creator\obj\x64\Debug\
 Origin_creator
 none
 false
 
-C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\App.xaml
-21266986065
+C:\Users\lianaeschlimann\source\repos\LianAe\Origin-creator\Origin creator\App.xaml
+3575332051
 
-7-1320422438
-18-1542596412
-MainWindow.xaml;OriginMainMenu.xaml;
+9421343291
+191417006610
+Views\MainWindowView.xaml;Views\OriginMainMenuView.xaml;Views\SelectablePowerView.xaml;
 
 True
 

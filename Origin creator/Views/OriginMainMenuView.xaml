@@ -118,12 +118,7 @@
         <TabControl Background="#474747"  Grid.Row="1" Grid.RowSpan="2" Grid.Column="2" Grid.ColumnSpan="2" Margin="5" >
             <TabItem Header="Vanilla powers"><!--Schon existirende Kräfte vom Mod-->
                 <ListBox Background="#474747" Foreground="White" ScrollViewer.HorizontalScrollBarVisibility="Disabled" >
-                    <ListBoxItem Background="#4E797A" HorizontalContentAlignment="Center" Margin="5">
-                            <StackPanel >
-                            <TextBlock Text="Winged" FontSize="20" TextAlignment="Center"></TextBlock>
-                            <TextBlock Text="You have Elytra wings without needing to equip any." TextAlignment="Justify" TextWrapping="Wrap"></TextBlock>
-                            </StackPanel>
-                    </ListBoxItem>
+                    <local:SelectablePower></local:SelectablePower>
 
                     <ListBoxItem Background="#4E797A" HorizontalContentAlignment="Center" Margin="5">
                         <StackPanel >

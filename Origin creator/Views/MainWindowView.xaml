@@ -10,7 +10,6 @@
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"></ColumnDefinition>
             <ColumnDefinition Width="*"></ColumnDefinition>
-            <ColumnDefinition Width="*"></ColumnDefinition>
             <ColumnDefinition Width="20"></ColumnDefinition>
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
@@ -21,13 +20,19 @@
         </Grid.RowDefinitions>
 
 <!--Header Menu-->
-        <Menu FontSize="15" Foreground="#7A5238" Background="#93C5C7" Grid.ColumnSpan="4"  VerticalAlignment="Top" Padding="2">
+        <Menu Name="HeaderMenu" FontSize="15" Foreground="#7A5238" Background="#93C5C7" Grid.ColumnSpan="3"  VerticalAlignment="Top" Padding="2">
             <MenuItem Header="New..." ></MenuItem>
             <MenuItem Header="Open..." ></MenuItem>
             <MenuItem Header="Save" ></MenuItem>
         </Menu>
 
-<!--Origin Menu, Einzelner User control damit man es verstecken kann-->
-        <local:OriginMainMenu Grid.Row="2" Grid.Column="1" Grid.ColumnSpan="2"></local:OriginMainMenu>
+        <!--Buttons wenn kein Origin geöffnet ist-->
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Center">
+            <Button Content="New Origin..." Command="{Binding CreateNewOriginCommand}" FontSize="25" Background="#4E797A" Foreground="White" Margin="5"></Button>
+            <Button Content="Open Origin..." Command="{Binding OpenOriginCommand}" FontSize="25" Background="#4E797A" Foreground="White" Margin="5"></Button>
+        </StackPanel>
+
+        <!--Origin Menu, Einzelner User control damit man es verstecken kann-->
+        <local:OriginMainMenu Grid.Row="2" Grid.Column="1" Visibility="Hidden"></local:OriginMainMenu>
     </Grid>
 </Window>
