@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Origin_creator"
         xmlns:ViewModels="clr-namespace:Origin_creator.ViewModels"
-        mc:Ignorable="d" DataContext="{d:DesignInstance ViewModels:MainWindowViewModel}"
+        mc:Ignorable="d" d:DataContext="{d:DesignInstance ViewModels:MainWindowViewModel}"
         Title="Origin creator" Height="720" MinHeight="500" Width="1280" MinWidth="750" Foreground="White" FontSize="15">
     <Grid Background="#2B2B2B">
         <Grid.ColumnDefinitions>
