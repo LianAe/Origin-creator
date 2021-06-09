@@ -11,19 +11,54 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace Origin_creator.ViewModels
 {
+    /*
+    public static class GlobalVariables
+    {
+        public static string IconListPath = ".\\items\\";
+    }*/
     class MainWindowViewModel
     {
         public ICommand OpenOriginCommand { get; set; }
         public ICommand CreateNewOriginCommand { get; set; }
         public Visibility OriginMenuVisibility { get; set; }
 
+        //Values of Origin
+        public List<string> ListIconsName { get; set; }
+        public string TxtOriginName { get; set; }
+        public string TxtOriginDescription { get; set; }
+
+        public byte Impact
+        {
+            get => this.impact;
+            set
+            {
+                if (value <= 3)
+                {
+                    this.impact = value;
+                }
+                else
+                {
+                    this.impact = 3;
+                }
+            }
+        }
+        public List<string> ListPowers { get; set; }
+
+        //Values for Power
+        public string TxtPowerName { get; set; }
+        public string TxtPowerDescription { get; set; }
+        public string TxtType { get; set; }
+        public bool IsHidden { get; set; }
+
+
         private MainWindowModel mainWindowModel;
+        private byte impact;
 
         public MainWindowViewModel()
         {
             this.OriginMenuVisibility = Visibility.Hidden;
-            this.OpenOriginCommand = new RelayCommand(this.SelectOriginToOpen, () => true);
-            this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("",""), () => true);
+            this.OpenOriginCommand = new RelayCommand(this.SelectOriginToOpen, () => Convert.ToBoolean(OriginMenuVisibility));
+            this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("",""), () => Convert.ToBoolean(OriginMenuVisibility));
             this.mainWindowModel = new MainWindowModel();
         }
 
@@ -32,6 +67,7 @@ namespace Origin_creator.ViewModels
             this.mainWindowModel.OpenOrigin(); //Dialog to chose folder gets opened.
             if (!this.mainWindowModel.IsFolderDataPack())
             {
+                //If the folder isn't an Origin, a message gets shown.
                 MessageBoxResult result = MessageBox.Show("Folder is not an Origin data pack", "Invalide folder", MessageBoxButton.OKCancel);
                 if (result == MessageBoxResult.OK)
                 { 
@@ -40,9 +76,21 @@ namespace Origin_creator.ViewModels
             }
             else
             {
-                this.mainWindowModel.LoadOrigin();
+                this.loadOriginValues();
             }
             
+        }
+
+        private void loadOriginValues()
+        {
+            Origin loadedOrigin = this.mainWindowModel.LoadOrigin();
+
+            this.TxtOriginName = loadedOrigin.OriginName;
+            this.TxtOriginDescription = loadedOrigin.originDescription;
+            this.Impact = loadedOrigin.originImpact;
+            this.ListIconsName = this.mainWindowModel.iconsList.Select(i => i.itemName).ToList();
+            this.ListPowers = loadedOrigin.originPowersList;
+            this.OriginMenuVisibility = Visibility.Visible;
         }
     }
 }

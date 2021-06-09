@@ -4,13 +4,14 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:local="clr-namespace:Origin_creator"
+    xmlns:viewModels="clr-namespace:Origin_creator.ViewModels"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     MinWidth="600"
     MinHeight="400"
     d:DesignHeight="675"
     d:DesignWidth="1240"
-    mc:Ignorable="d">
+    mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3.6*" MinWidth="250" />
@@ -29,7 +30,7 @@
         <TextBlock
             Grid.ColumnSpan="4"
             FontSize="25"
-            Text="Example Origin" />
+            Text="{Binding TxtOriginName}" />
         <Rectangle
             Grid.ColumnSpan="4"
             Height="3"
@@ -42,6 +43,7 @@
             Margin="5"
             Text="Description" />
         <TextBox
+            Text="{Binding TxtOriginDescription}"
             Grid.Row="1"
             Margin="5,25,5,5"
             Background="#4E797A"
@@ -64,16 +66,13 @@
                     BorderThickness="2"
                     Maximum="3"
                     Minimum="1"
-                    Value="1" />
+                    Value="{Binding Impact}" />
             </StackPanel>
 
             <!--  Origin Icon  -->
             <StackPanel Margin="5">
                 <TextBlock Text="Icon:" />
-                <ComboBox MinWidth="60">
-                    <ComboBoxItem>Stone</ComboBoxItem>
-                    <ComboBoxItem>Grass</ComboBoxItem>
-                    <ComboBoxItem>Cobblestone</ComboBoxItem>
+                <ComboBox MinWidth="60" ItemsSource="{Binding ListIconsName}">
                 </ComboBox>
             </StackPanel>
         </WrapPanel>
@@ -97,7 +96,7 @@
                 Grid.ColumnSpan="4"
                 HorizontalAlignment="Center"
                 FontSize="20"
-                Text="Example Power" />
+                Text="{Binding TxtPowerName}" />
             <Rectangle
                 Height="3"
                 Margin="10,0"
@@ -117,7 +116,7 @@
                             Background="#4E797A"
                             BorderBrush="#93C5C7"
                             BorderThickness="2"
-                            Text="(bsp.)You receive damage over time while in contact with water."
+                            Text="{Binding TxtPowerDescription}"
                             TextWrapping="Wrap" />
                     </StackPanel>
 
@@ -129,22 +128,24 @@
                             Background="#4E797A"
                             BorderBrush="#93C5C7"
                             BorderThickness="2"
-                            Text="(bsp.)&quot;type&quot;: &quot;origins:damage_over_time&quot;" />
+                            Text="{Binding TxtType}" />
                     </StackPanel>
 
                     <StackPanel Margin="5" Orientation="Horizontal">
                         <!--  Kräfte sichtbarkeit(versteckt Ja/Nein)  -->
                         <TextBlock Margin="0,0,5,0" Text="Hidden:" />
                         <CheckBox
+                            IsChecked="{Binding IsHidden}"
                             Background="#4E797A"
                             BorderBrush="#93C5C7"
                             BorderThickness="2" />
                     </StackPanel>
 
-                    <!--  (Bsp.)Be    ispielfelder für einen spezifischen kräftetyp  -->
+                    <!--  (Bsp.)Beispielfelder für einen spezifischen kräftetyp  -->
 
+                    <!--
                     <StackPanel Margin="5" Orientation="Horizontal">
-                        <!--  (Bsp.)Schaden interval  -->
+                        ~1~  (Bsp.)Schaden interval  @1@
                         <TextBlock Margin="0,0,5,0" Text="(Bsp.)interval:" />
                         <xctk:ByteUpDown
                             Background="#4E797A"
@@ -154,7 +155,7 @@
                     </StackPanel>
 
                     <StackPanel Margin="5">
-                        <!--  (Bsp.)Schadens Voraussetzung  -->
+                        ~1~  (Bsp.)Schadens Voraussetzung  @1@
                         <TextBlock Margin="0,0,5,0" Text="(Bsp.)Condition:" />
                         <TextBox
                             MinWidth="100"
@@ -163,7 +164,7 @@
                             BorderThickness="2"
                             Text="(bsp.)&quot;condition&quot;:{&quot;fluid_condition&quot;: {&quot;type&quot;: &quot;origins:in_tag&quot;, &quot;tag&quot;: &quot;minecraft:water&quot;}}"
                             TextWrapping="Wrap" />
-                    </StackPanel>
+                    </StackPanel>-->
                 </WrapPanel>
             </ScrollViewer>
             <!--  Die Button um eine Kraft zu erstellen bearbeiten oder löschen  -->
@@ -202,14 +203,12 @@
             Margin="5"
             Text="Powers" />
         <ListBox
+            ItemsSource="{Binding ListPowers}"
             Grid.Row="2"
             Grid.Column="1"
             Margin="5,25,5,5"
             Background="#4E797A"
             Foreground="White">
-            <ListBoxItem>Hydrophobia</ListBoxItem>
-            <ListBoxItem>Nocturnal</ListBoxItem>
-            <ListBoxItem>Arthtopod (Hidden)</ListBoxItem>
         </ListBox>
 
         <!--  Verfügbare Kräfte zum hinzufügen  -->

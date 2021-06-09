@@ -6,6 +6,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
+using Newtonsoft.Json;
+using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Origin_creator
@@ -14,10 +16,12 @@ namespace Origin_creator
     {
         //Variables
         private Origin openOrigin;
+        public List<IconItem> iconsList { get; }
 
         //Constructor
         public MainWindowModel()
         {
+            this.iconsList = this.ReadItemsList();
         }
 
         //Methods
@@ -34,13 +38,11 @@ namespace Origin_creator
 
         public bool IsFolderDataPack()
         {
-            if (
-                Directory.Exists(this.openOrigin.FolderPath) //TEST To DELETE
-                                                           /*
-                File.Exists(this.openOrigin.FolderPath + "\\pack.mcmeta") && 
-                Directory.Exists(this.openOrigin.FolderPath + $"\\data\\{this.openOrigin.OriginNameCode}\\powers") && 
-                File.Exists(this.openOrigin.FolderPath + "\\data\\origins\\origin_layers\\origins.json") &&
-                File.Exists(this.openOrigin.FolderPath + ("\\data\\{0}\\origins\\{0}", this.openOrigin.OriginNameCode))*/)
+            if (//Checking if all the needed files or folders are where they should be.
+                File.Exists(this.openOrigin.OriginFolderPath + "\\pack.mcmeta") && 
+                Directory.Exists(this.openOrigin.OriginFolderPath + $"\\data\\{this.openOrigin.OriginNameCode}\\powers") && 
+                File.Exists(this.openOrigin.OriginFolderPath + "\\data\\origins\\origin_layers\\origin.json") &&
+                File.Exists(this.openOrigin.OriginFolderPath + $"\\data\\{this.openOrigin.OriginNameCode}\\origins\\{this.openOrigin.OriginNameCode}.json"))
             {
                 return true;
             }
@@ -48,9 +50,26 @@ namespace Origin_creator
             return false;
         }
 
-        public void LoadOrigin()
+        public Origin LoadOrigin()
         {
+            string originJsonText = File.ReadAllText(this.openOrigin.OriginFolderPath +
+                                                     $"\\data\\{this.openOrigin.OriginNameCode}\\origins\\{this.openOrigin.OriginNameCode}.json");
+            //File with the fields: name, description, icon, impact, powers
+            dynamic originJsonDeserialized = JsonConvert.DeserializeObject(originJsonText);
+            this.openOrigin.SetValuesFromJson(originJsonDeserialized);
+            return this.openOrigin;
+        }
 
+        public List<IconItem> ReadItemsList()
+        {
+            List<IconItem> itemsList = new List<IconItem>();
+            string iconListFileText = File.ReadAllText(".\\items.json");
+            dynamic iconList = JsonConvert.DeserializeObject(iconListFileText);
+            foreach (var item in iconList)
+            {
+                itemsList.Add(new IconItem(item.name.ToString(), item.type.ToString() + "-" + item.meta.ToString(), item.text_type.ToString()));
+            }
+            return itemsList;
         }
     }
     

@@ -34,6 +34,6 @@
         </StackPanel>
 
         <!--Origin Menu, Einzelner User control damit man es verstecken kann-->
-        <local:OriginMainMenu Grid.Row="2" Grid.Column="1" Visibility="{Binding OriginMenuVisibility}"></local:OriginMainMenu>
+        <local:OriginMainMenu Grid.Row="2" Grid.Column="1" Visibility="{Binding OriginMenuVisibility, Mode=TwoWay}"></local:OriginMainMenu>
     </Grid>
 </Window>
