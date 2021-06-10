@@ -7,11 +7,11 @@
     xmlns:viewModels="clr-namespace:Origin_creator.ViewModels"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
-    MinWidth="600"
+    MinWidth="600" d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
     MinHeight="400"
     d:DesignHeight="675"
     d:DesignWidth="1240"
-    mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}">
+    mc:Ignorable="d"  >
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="3.6*" MinWidth="250" />

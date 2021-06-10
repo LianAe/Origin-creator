@@ -34,3 +34,45 @@ C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\Debug\ru\Xc
 C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
 C:\Users\liana\source\repos\LianAe\Origin-creator\Origin creator\obj\Debug\Origin creator.csproj.CopyComplete
+C:\Projects\Origin-creator\Origin creator\bin\Debug\items.json
+C:\Projects\Origin-creator\Origin creator\bin\Debug\Origin creator.exe.config
+C:\Projects\Origin-creator\Origin creator\bin\Debug\Origin creator.exe
+C:\Projects\Origin-creator\Origin creator\bin\Debug\Origin creator.pdb
+C:\Projects\Origin-creator\Origin creator\bin\Debug\Newtonsoft.Json.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\Xceed.Wpf.AvalonDock.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\Xceed.Wpf.Toolkit.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\Newtonsoft.Json.xml
+C:\Projects\Origin-creator\Origin creator\bin\Debug\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csprojAssemblyReference.cache
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Views\MainWindowView.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Views\OriginMainMenuView.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Views\SelectablePowerView.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\Debug\App.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\Debug\GeneratedInternalTypeHelper.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator_MarkupCompile.cache
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator_MarkupCompile.lref
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Views\MainWindowView.baml
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Views\OriginMainMenuView.baml
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Views\SelectablePowerView.baml
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.g.resources
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin_creator.Properties.Resources.resources
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csproj.GenerateResource.cache
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csproj.CoreCompileInputs.cache
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csproj.CopyComplete
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.exe
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.pdb
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csproj.Fody.CopyLocal.cache
