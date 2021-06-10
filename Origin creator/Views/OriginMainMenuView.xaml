@@ -58,7 +58,7 @@
             Margin="5,20,5,0">
             <!--  Origin Auswirkung  -->
             <StackPanel Margin="5">
-                <TextBlock Text="Impact:" />
+                <TextBlock Text="Impact:" ToolTip="can be 1-3" />
                 <xctk:ByteUpDown
                     MinWidth="60"
                     Background="#4E797A"

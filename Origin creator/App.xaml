@@ -1,7 +1,7 @@
-﻿<Application
+﻿<forms:Application
     x:Class="Origin_creator.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="clr-namespace:Origin_creator">
-    <Application.Resources />
-</Application>
+    xmlns:local="clr-namespace:Origin_creator"
+    xmlns:forms="clr-namespace:System.Windows.Forms;assembly=System.Windows.Forms">
+</forms:Application>

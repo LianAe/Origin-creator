@@ -1,12 +1,15 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using System.Windows.Forms;
 using Microsoft.Win32;
+using Origin_creator.Annotations;
 using MessageBox = System.Windows.MessageBox;
 
 namespace Origin_creator.ViewModels
@@ -16,7 +19,7 @@ namespace Origin_creator.ViewModels
     {
         public static string IconListPath = ".\\items\\";
     }*/
-    class MainWindowViewModel
+    class MainWindowViewModel : INotifyPropertyChanged
     {
         public ICommand OpenOriginCommand { get; set; }
         public ICommand CreateNewOriginCommand { get; set; }
@@ -91,6 +94,15 @@ namespace Origin_creator.ViewModels
             this.ListIconsName = this.mainWindowModel.iconsList.Select(i => i.itemName).ToList();
             this.ListPowers = loadedOrigin.originPowersList;
             this.OriginMenuVisibility = Visibility.Visible;
+            this.OnPropertyChanged();
+        }
+
+        public event PropertyChangedEventHandler PropertyChanged;
+
+        [NotifyPropertyChangedInvocator]
+        protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
+        {
+            this.PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
 }
