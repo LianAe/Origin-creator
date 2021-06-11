@@ -18,6 +18,7 @@ namespace Origin_creator
         //Variables
         private Origin openOrigin;
         public List<IconItem> iconsList { get; }
+        private string originJsonPath; 
 
         //Constructor
         public MainWindowModel()
@@ -35,6 +36,7 @@ namespace Origin_creator
                 Path.GetFileName(getFolder.SelectedPath).Replace(" ", "_").ToLower(), //Converting the folder name because the subfolders shouldn't use spaces or uppercase.
                 getFolder.SelectedPath
                 );
+            originJsonPath = this.openOrigin.OriginFolderPath + $"\\data\\{this.openOrigin.OriginNameCode}\\origins\\{this.openOrigin.OriginNameCode}.json";
         }
 
         public bool IsFolderDataPack()
@@ -53,8 +55,7 @@ namespace Origin_creator
 
         public Origin LoadOrigin()
         {
-            string originJsonText = File.ReadAllText(this.openOrigin.OriginFolderPath +
-                                                     $"\\data\\{this.openOrigin.OriginNameCode}\\origins\\{this.openOrigin.OriginNameCode}.json");
+            string originJsonText = File.ReadAllText(this.originJsonPath);
             //File with the fields: name, description, icon, impact, powers
             dynamic originJsonDeserialized = JsonConvert.DeserializeObject(originJsonText);
             this.openOrigin.SetValuesFromJson(originJsonDeserialized);
@@ -73,9 +74,11 @@ namespace Origin_creator
             return itemsList;
         }
 
-        public void SaveOriginToJson(string name, string description, string icon, List<Power> powers, List<string> powersList)
-        {
-            
+        public void SaveOriginToJson(Origin origin)
+        {/*
+            dynamic originJsonText = JsonConvert.SerializeObject(openOrigin);
+            StreamWriter sw = new StreamWriter(this.originJsonPath);
+            (this.originJsonPath ,originJsonText.powers.ToString() + originJsonText.icon.ToString());*/
         }
     }
     

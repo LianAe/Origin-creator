@@ -27,6 +27,7 @@ namespace Origin_creator.ViewModels
 
         public Visibility OriginMenuVisibility { get; private set; }
         public Visibility StartButtonsVisibility { get; private set; }
+        public Origin LoadedOrigin { get; private set; }
 
         //Values of Origin
         public List<string> ListIconsName { get; set; }
@@ -68,8 +69,8 @@ namespace Origin_creator.ViewModels
             this.StartButtonsVisibility = Visibility.Visible;
             this.OriginMenuVisibility = Visibility.Hidden;
             this.OpenOriginCommand = new RelayCommand(this.SelectOriginToOpen, () => true);
-            this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("",""), () => true);/*
-            this.SaveOriginCommand = new RelayCommand(() => Void, () => this.TxtOriginName != null);*/
+            this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("",""), () => true);
+            this.SaveOriginCommand = new RelayCommand(() => this.mainWindowModel.SaveOriginToJson(this.LoadedOrigin), () => this.TxtOriginName != null);
             this.mainWindowModel = new MainWindowModel();
         }
 
@@ -94,20 +95,21 @@ namespace Origin_creator.ViewModels
 
         private void LoadOriginValues()
         {
-            Origin loadedOrigin = this.mainWindowModel.LoadOrigin();
+            this.LoadedOrigin = this.mainWindowModel.LoadOrigin();
             this.OriginMenuVisibility = Visibility.Visible;
             this.StartButtonsVisibility = Visibility.Hidden;
 
-            this.TxtOriginName = loadedOrigin.name;
-            this.TxtOriginDescription = loadedOrigin.description;
-            this.Impact = loadedOrigin.impact;
+            this.TxtOriginName = this.LoadedOrigin.name;
+            this.TxtOriginDescription = this.LoadedOrigin.description;
+            this.Impact = this.LoadedOrigin.impact;
             this.ListIconsName = this.mainWindowModel.iconsList.Select(i => i.ItemName).ToList();
-            int startIntIcon = loadedOrigin.icon.LastIndexOf(":") + 1;
+            int startIntIcon = this.LoadedOrigin.icon.LastIndexOf(":") + 1;
             //Exact item name is searched by nameId in the iconlist
-            this.SelectedIcon = this.mainWindowModel.iconsList.Find(n => n.ItemNameId == loadedOrigin.icon.Substring(startIntIcon)).ItemName;
-            this.ItemIconPath = this.mainWindowModel.iconsList.Find(n => n.ItemNameId == loadedOrigin.icon.Substring(startIntIcon)).ItemIconPath;
-            this.ListPowers = loadedOrigin.powers;
+            this.SelectedIcon = this.mainWindowModel.iconsList.Find(n => n.ItemNameId == this.LoadedOrigin.icon.Substring(startIntIcon)).ItemName;
+            this.ItemIconPath = this.mainWindowModel.iconsList.Find(n => n.ItemNameId == this.LoadedOrigin.icon.Substring(startIntIcon)).ItemIconPath;
+            this.ListPowers = this.LoadedOrigin.powers;
         }
+
 
         public event PropertyChangedEventHandler PropertyChanged;
 
