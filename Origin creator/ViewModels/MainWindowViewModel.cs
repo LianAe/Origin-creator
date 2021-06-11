@@ -22,13 +22,16 @@ namespace Origin_creator.ViewModels
     class MainWindowViewModel : INotifyPropertyChanged
     {
         public ICommand OpenOriginCommand { get;}
-        public ICommand CreateNewOriginCommand { get;}
+        public ICommand CreateNewOriginCommand { get; }
+        public ICommand SaveOriginCommand { get; }
 
-        public Visibility OriginMenuVisibility { get; set; }
+        public Visibility OriginMenuVisibility { get; private set; }
+        public Visibility StartButtonsVisibility { get; private set; }
 
         //Values of Origin
         public List<string> ListIconsName { get; set; }
         public string TxtOriginName { get; set; }
+        public string ItemIconPath { get; private set; }
         public string TxtOriginDescription { get; set; }
 
         public byte Impact
@@ -46,6 +49,7 @@ namespace Origin_creator.ViewModels
                 }
             }
         }
+        public string SelectedIcon { get; set; }
         public List<string> ListPowers { get; set; }
 
         //Values for Power
@@ -55,14 +59,17 @@ namespace Origin_creator.ViewModels
         public bool IsHidden { get; set; }
 
 
+
         private MainWindowModel mainWindowModel;
         private byte impact;
 
         public MainWindowViewModel()
         {
+            this.StartButtonsVisibility = Visibility.Visible;
             this.OriginMenuVisibility = Visibility.Hidden;
-            this.OpenOriginCommand = new RelayCommand(this.SelectOriginToOpen, () => Convert.ToBoolean(OriginMenuVisibility));
-            this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("",""), () => Convert.ToBoolean(OriginMenuVisibility));
+            this.OpenOriginCommand = new RelayCommand(this.SelectOriginToOpen, () => true);
+            this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("",""), () => true);/*
+            this.SaveOriginCommand = new RelayCommand(() => Void, () => this.TxtOriginName != null);*/
             this.mainWindowModel = new MainWindowModel();
         }
 
@@ -80,21 +87,26 @@ namespace Origin_creator.ViewModels
             }
             else
             {
-                this.loadOriginValues();
+                this.LoadOriginValues();
             }
             
         }
 
-        private void loadOriginValues()
+        private void LoadOriginValues()
         {
             Origin loadedOrigin = this.mainWindowModel.LoadOrigin();
             this.OriginMenuVisibility = Visibility.Visible;
+            this.StartButtonsVisibility = Visibility.Hidden;
 
-            this.TxtOriginName = loadedOrigin.OriginName;
-            this.TxtOriginDescription = loadedOrigin.originDescription;
-            this.Impact = loadedOrigin.originImpact;
-            this.ListIconsName = this.mainWindowModel.iconsList.Select(i => i.itemName).ToList();
-            this.ListPowers = loadedOrigin.originPowersList;
+            this.TxtOriginName = loadedOrigin.name;
+            this.TxtOriginDescription = loadedOrigin.description;
+            this.Impact = loadedOrigin.impact;
+            this.ListIconsName = this.mainWindowModel.iconsList.Select(i => i.ItemName).ToList();
+            int startIntIcon = loadedOrigin.icon.LastIndexOf(":") + 1;
+            //Exact item name is searched by nameId in the iconlist
+            this.SelectedIcon = this.mainWindowModel.iconsList.Find(n => n.ItemNameId == loadedOrigin.icon.Substring(startIntIcon)).ItemName;
+            this.ItemIconPath = this.mainWindowModel.iconsList.Find(n => n.ItemNameId == loadedOrigin.icon.Substring(startIntIcon)).ItemIconPath;
+            this.ListPowers = loadedOrigin.powers;
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

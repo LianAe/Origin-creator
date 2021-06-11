@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Origin_creator.Classes;
 using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
@@ -21,7 +22,7 @@ namespace Origin_creator
         //Constructor
         public MainWindowModel()
         {
-            this.iconsList = this.ReadItemsList();
+            this.iconsList = this.WriteIconListFromItemsList();
         }
 
         //Methods
@@ -60,16 +61,21 @@ namespace Origin_creator
             return this.openOrigin;
         }
 
-        public List<IconItem> ReadItemsList()
+        public List<IconItem> WriteIconListFromItemsList()
         {
             List<IconItem> itemsList = new List<IconItem>();
             string iconListFileText = File.ReadAllText(".\\items.json");
             dynamic iconList = JsonConvert.DeserializeObject(iconListFileText);
             foreach (var item in iconList)
             {
-                itemsList.Add(new IconItem(item.name.ToString(), item.type.ToString() + "-" + item.meta.ToString(), item.text_type.ToString()));
+                itemsList.Add(new IconItem(item.name.ToString(), item.type.ToString() + "-" + item.meta.ToString()));
             }
             return itemsList;
+        }
+
+        public void SaveOriginToJson(string name, string description, string icon, List<Power> powers, List<string> powersList)
+        {
+            
         }
     }
     

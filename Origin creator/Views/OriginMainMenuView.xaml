@@ -12,12 +12,40 @@
     d:DesignHeight="675"
     d:DesignWidth="1240"
     mc:Ignorable="d"  >
+    
+    <!-- This Template would set the color of disabled buttons but its to complicated for the time being.
+    <UserControl.Resources>
+        <Style TargetType="{x:Type Button}">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <TextBlock x:Name="ButtonContent" Padding="5">
+                            <ContentPresenter />
+                        </TextBlock>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter 
+                                    Property="Foreground"
+                                    TargetName="ButtonContent"
+                                    Value="#98887E"/>
+                                <Setter 
+                                    Property="Background"
+                                    TargetName="ButtonContent"
+                                    Value="#789A9B"/>
+                             </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </UserControl.Resources>-->
+
     <Grid>
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="3.6*" MinWidth="250" />
+            <ColumnDefinition Width="2.5*" MinWidth="250" />
             <ColumnDefinition Width="*" MinWidth="150" />
-            <ColumnDefinition Width="1.3*" MinWidth="150" />
-            <ColumnDefinition Width="1.3*" MinWidth="150" />
+            <ColumnDefinition Width="1*" MinWidth="150" />
+            <ColumnDefinition Width="1*" MinWidth="150" />
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="40" />
@@ -27,10 +55,12 @@
         </Grid.RowDefinitions>
 
         <!--  Origin Name  -->
-        <TextBlock
-            Grid.ColumnSpan="4"
-            FontSize="25"
-            Text="{Binding TxtOriginName}" />
+        <StackPanel Orientation="Horizontal" Grid.ColumnSpan="4">
+            <TextBlock
+                FontSize="25"
+                Text="{Binding TxtOriginName}" Margin="5"/>
+            <Image Source="{Binding ItemIconPath}" Margin="5"></Image>
+        </StackPanel>
         <Rectangle
             Grid.ColumnSpan="4"
             Height="3"
@@ -72,7 +102,7 @@
             <!--  Origin Icon  -->
             <StackPanel Margin="5">
                 <TextBlock Text="Icon:" />
-                <ComboBox MinWidth="60" ItemsSource="{Binding ListIconsName}">
+                <ComboBox MinWidth="60" SelectedItem="{Binding SelectedIcon}" ItemsSource="{Binding ListIconsName}">
                 </ComboBox>
             </StackPanel>
         </WrapPanel>
@@ -169,28 +199,29 @@
             </ScrollViewer>
             <!--  Die Button um eine Kraft zu erstellen bearbeiten oder löschen  -->
             <WrapPanel
-                Grid.Row="3"
+                Grid.Row="2"
                 Grid.ColumnSpan="4"
                 HorizontalAlignment="Center"
-                VerticalAlignment="Bottom">
+                VerticalAlignment="Bottom" IsEnabled="False" >
                 <Button
                     Margin="5"
                     Background="#4E797A"
                     Content="New power..."
                     FontSize="20"
-                    Foreground="White" />
+                    Foreground="#98887E" >
+                </Button>
                 <Button
                     Margin="5"
                     Background="#4E797A"
                     Content="Edit power"
                     FontSize="20"
-                    Foreground="White" />
+                    Foreground="#98887E" />
                 <Button
                     Margin="5"
                     Background="#874444"
                     Content="Delete power"
                     FontSize="20"
-                    Foreground="White" />
+                    Foreground="#98887E" />
             </WrapPanel>
 
 
@@ -245,7 +276,7 @@
 
                 </ListBox>
             </TabItem>
-            <TabItem Header="Custom powers">
+            <TabItem Header="Custom powers" IsEnabled="False">
                 <!--  Kräfte die man selbst gemacht hat  -->
                 <ListBox Background="#474747" Foreground="White">
 
