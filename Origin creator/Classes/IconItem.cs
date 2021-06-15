@@ -10,18 +10,18 @@ namespace Origin_creator
     class IconItem
     {
         //variables
-        public string itemName;
-        private string itemNameId;
+        public readonly string ItemName;
+        public string ItemNameId { get; }
         private string itemId;
-        private string itemIconPath;
+        public string ItemIconPath { get; }
 
         //constructor
-        public IconItem(string itemName, string itemId, string itemNameId)
+        public IconItem(string itemName, string itemId)
         {
-            this.itemName = itemName;
+            this.ItemName = itemName;
             this.itemId = itemId;
-            this.itemNameId = itemNameId;
-            this.itemIconPath = ".\\items\\" + this.itemId + ".png";
+            this.ItemNameId = itemName.ToLower().Replace(" ", "_");//The Json list i'm using dosen't contain the exact item Namespace-Id so i have to convert the name.
+            this.ItemIconPath = "/Origin creator;component/itemIcons/" + this.itemId + ".png";
         }
 
     }

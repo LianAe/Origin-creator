@@ -9,30 +9,30 @@ namespace Origin_creator
 {
     class Origin
     {
-        public string OriginName { get; set; }
         public string OriginNameCode { get; }
         public string OriginFolderPath { get; }
-        public string originDescription;
-        public byte originImpact;
-        public string originIconNameId;
-        public List<string> originPowersList;
+        public string name { get; set; }//Variable names are as in JSON for easy converting
+        public string description;
+        public byte impact;
+        public string icon;
+        public List<string> powers;
 
 
-        public Origin(string originName, string originNameCode, string originFolderPath)
+        public Origin(string name, string originNameCode, string originFolderPath)
         {
-            this.OriginName = originName;
+            this.name = name;
             this.OriginNameCode = originNameCode;
             this.OriginFolderPath = originFolderPath;
-            this.originPowersList = new List<string>();
+            this.powers = new List<string>();
         }
 
         public void SetValuesFromJson(dynamic originJsonValues)
         {
-            this.OriginName = originJsonValues.name;
-            this.originDescription = originJsonValues.description;
-            this.originImpact = originJsonValues.impact;
-            this.originIconNameId = originJsonValues.icon;
-            this.originPowersList = originJsonValues.powers.ToObject<List<string>>();
+            this.name = originJsonValues.name;
+            this.description = originJsonValues.description;
+            this.impact = originJsonValues.impact;
+            this.icon = originJsonValues.icon;
+            this.powers = originJsonValues.powers.ToObject<List<string>>();
         }
     }
 }

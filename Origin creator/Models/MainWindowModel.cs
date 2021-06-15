@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Forms;
 using Newtonsoft.Json;
+using Origin_creator.Classes;
 using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
@@ -17,11 +18,12 @@ namespace Origin_creator
         //Variables
         private Origin openOrigin;
         public List<IconItem> iconsList { get; }
+        private string originJsonPath; 
 
         //Constructor
         public MainWindowModel()
         {
-            this.iconsList = this.ReadItemsList();
+            this.iconsList = this.WriteIconListFromItemsList();
         }
 
         //Methods
@@ -34,6 +36,7 @@ namespace Origin_creator
                 Path.GetFileName(getFolder.SelectedPath).Replace(" ", "_").ToLower(), //Converting the folder name because the subfolders shouldn't use spaces or uppercase.
                 getFolder.SelectedPath
                 );
+            originJsonPath = this.openOrigin.OriginFolderPath + $"\\data\\{this.openOrigin.OriginNameCode}\\origins\\{this.openOrigin.OriginNameCode}.json";
         }
 
         public bool IsFolderDataPack()
@@ -52,24 +55,30 @@ namespace Origin_creator
 
         public Origin LoadOrigin()
         {
-            string originJsonText = File.ReadAllText(this.openOrigin.OriginFolderPath +
-                                                     $"\\data\\{this.openOrigin.OriginNameCode}\\origins\\{this.openOrigin.OriginNameCode}.json");
+            string originJsonText = File.ReadAllText(this.originJsonPath);
             //File with the fields: name, description, icon, impact, powers
             dynamic originJsonDeserialized = JsonConvert.DeserializeObject(originJsonText);
             this.openOrigin.SetValuesFromJson(originJsonDeserialized);
             return this.openOrigin;
         }
 
-        public List<IconItem> ReadItemsList()
+        public List<IconItem> WriteIconListFromItemsList()
         {
             List<IconItem> itemsList = new List<IconItem>();
             string iconListFileText = File.ReadAllText(".\\items.json");
             dynamic iconList = JsonConvert.DeserializeObject(iconListFileText);
             foreach (var item in iconList)
             {
-                itemsList.Add(new IconItem(item.name.ToString(), item.type.ToString() + "-" + item.meta.ToString(), item.text_type.ToString()));
+                itemsList.Add(new IconItem(item.name.ToString(), item.type.ToString() + "-" + item.meta.ToString()));
             }
             return itemsList;
+        }
+
+        public void SaveOriginToJson(Origin origin)
+        {/*
+            dynamic originJsonText = JsonConvert.SerializeObject(openOrigin);
+            StreamWriter sw = new StreamWriter(this.originJsonPath);
+            (this.originJsonPath ,originJsonText.powers.ToString() + originJsonText.icon.ToString());*/
         }
     }
     

@@ -7,6 +7,7 @@
         xmlns:viewModels="clr-namespace:Origin_creator.ViewModels"
         mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
         Title="Origin creator" Height="720" MinHeight="500" Width="1280" MinWidth="750" Foreground="White" FontSize="15">
+
     <Grid Background="#2B2B2B">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="20"></ColumnDefinition>
@@ -22,18 +23,18 @@
 
 <!--Header Menu-->
         <Menu Name="HeaderMenu" FontSize="15" Foreground="#7A5238" Background="#93C5C7" Grid.ColumnSpan="3"  VerticalAlignment="Top" Padding="2">
-            <MenuItem Header="New..." ></MenuItem>
-            <MenuItem Header="Open..." ></MenuItem>
-            <MenuItem Header="Save" ></MenuItem>
+            <MenuItem Header="New..." Command="{Binding CreateNewOriginCommand}"></MenuItem>
+            <MenuItem Header="Open..." Command="{Binding OpenOriginCommand}" ></MenuItem>
+            <MenuItem Header="Save" Command="{Binding SaveOriginCommand}" ></MenuItem>
         </Menu>
 
         <!--Buttons wenn kein Origin geöffnet ist-->
         <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="2"  HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Button Content="New Origin..." Command="{Binding CreateNewOriginCommand}" FontSize="25" Background="#4E797A" Foreground="White" Margin="5"></Button>
-            <Button Content="Open Origin..." Command="{Binding OpenOriginCommand}" FontSize="25" Background="#4E797A" Foreground="White" Margin="5"></Button>
+            <Button Content="New Origin..." Command="{Binding CreateNewOriginCommand}" Visibility="{Binding StartButtonsVisibility}" FontSize="25" Background="#4E797A" Foreground="White" Margin="5"></Button>
+            <Button Content="Open Origin..." Command="{Binding OpenOriginCommand}" Visibility="{Binding StartButtonsVisibility}" FontSize="25" Background="#4E797A" Foreground="White" Margin="5"></Button>
         </StackPanel>
 
         <!--Origin Menu, Einzelner User control damit man es verstecken kann-->
-        <local:OriginMainMenu Grid.Row="2" Grid.Column="1" Visibility="{Binding OriginMenuVisibility}"></local:OriginMainMenu>
+        <local:OriginMainMenu Grid.Row="2" Grid.Column="1" Visibility="{Binding OriginMenuVisibility}" ></local:OriginMainMenu>
     </Grid>
 </Window>
