@@ -15,7 +15,7 @@ namespace Origin_creator
 {
     class MainWindowModel
     {
-        //Variables
+        //Fields
         private Origin openOrigin;
         public List<IconItem> iconsList { get; }
         private string originJsonPath; 
@@ -75,10 +75,9 @@ namespace Origin_creator
         }
 
         public void SaveOriginToJson(Origin origin)
-        {/*
-            dynamic originJsonText = JsonConvert.SerializeObject(openOrigin);
-            StreamWriter sw = new StreamWriter(this.originJsonPath);
-            (this.originJsonPath ,originJsonText.powers.ToString() + originJsonText.icon.ToString());*/
+        {
+            dynamic originJsonText = JsonConvert.SerializeObject(openOrigin, Formatting.Indented);
+                File.WriteAllText(this.originJsonPath, originJsonText);
         }
     }
     

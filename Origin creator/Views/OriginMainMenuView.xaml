@@ -7,11 +7,15 @@
     xmlns:viewModels="clr-namespace:Origin_creator.ViewModels"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+    xmlns:xamlInverter="clr-namespace:XamlInverter;assembly=XamlInverter"
     MinWidth="600" d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
     MinHeight="400"
     d:DesignHeight="675"
     d:DesignWidth="1240"
     mc:Ignorable="d"  >
+    <UserControl.Resources>
+        <xamlInverter:BooleanValueInverter x:Key="Inverter" />
+    </UserControl.Resources>
     
     <!-- This Template would set the color of disabled buttons but its to complicated for the time being.
     <UserControl.Resources>
@@ -79,7 +83,8 @@
             Background="#4E797A"
             BorderBrush="#93C5C7"
             BorderThickness="2"
-            TextWrapping="Wrap" />
+            TextWrapping="Wrap"
+            IsReadOnly="{Binding ReadonlyMode}"/>
 
 
         <WrapPanel
@@ -96,13 +101,14 @@
                     BorderThickness="2"
                     Maximum="3"
                     Minimum="1"
-                    Value="{Binding Impact}" />
+                    Value="{Binding Impact}" 
+                    IsReadOnly="{Binding ReadonlyMode}"/>
             </StackPanel>
 
             <!--  Origin Icon  -->
             <StackPanel Margin="5">
                 <TextBlock Text="Icon:" />
-                <ComboBox MinWidth="60" SelectedItem="{Binding SelectedIcon}" ItemsSource="{Binding ListIconsName}">
+                <ComboBox MinWidth="60" SelectedItem="{Binding SelectedIcon}" ItemsSource="{Binding ListIconsName}" IsEnabled="{Binding ReadonlyMode, Converter={StaticResource Inverter}}">
                 </ComboBox>
             </StackPanel>
         </WrapPanel>
@@ -208,20 +214,23 @@
                     Background="#4E797A"
                     Content="New power..."
                     FontSize="20"
-                    Foreground="#98887E" >
+                    Foreground="#98887E"
+                    Visibility="{Binding ReadonlyModeVisibility}">
                 </Button>
                 <Button
                     Margin="5"
                     Background="#4E797A"
                     Content="Edit power"
                     FontSize="20"
-                    Foreground="#98887E" />
+                    Foreground="#98887E"
+                    Visibility="{Binding ReadonlyModeVisibility}" />
                 <Button
                     Margin="5"
                     Background="#874444"
                     Content="Delete power"
                     FontSize="20"
-                    Foreground="#98887E" />
+                    Foreground="#98887E"
+                    Visibility="{Binding ReadonlyModeVisibility}" />
             </WrapPanel>
 
 
@@ -249,7 +258,8 @@
             Grid.Column="2"
             Grid.ColumnSpan="2"
             Margin="5"
-            Background="#474747">
+            Background="#474747" 
+            Visibility="{Binding ReadonlyModeVisibility}">
             <TabItem Header="Vanilla powers">
                 <!--  Schon existirende Kräfte vom Mod  -->
                 <ListBox
@@ -309,7 +319,8 @@
             Background="#4E797A"
             Content="❮"
             FontSize="30"
-            Foreground="White" />
+            Foreground="White" 
+            Visibility="{Binding ReadonlyModeVisibility}"/>
         <Button
             Grid.Row="2"
             Grid.Column="3"
@@ -320,7 +331,8 @@
             Background="#4E797A"
             Content="❯"
             FontSize="30"
-            Foreground="White" />
+            Foreground="White" 
+            Visibility="{Binding ReadonlyModeVisibility}"/>
 
         <!--  Die Button zum verlassen, speichern und löschen  -->
         <StackPanel
@@ -339,7 +351,8 @@
                 Background="#4E797A"
                 Content="Save changes"
                 FontSize="20"
-                Foreground="White" />
+                Foreground="White"
+                Visibility="{Binding ReadonlyMode}" />
             <Button
                 Margin="5"
                 Background="#874444"

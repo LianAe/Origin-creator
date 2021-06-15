@@ -27,6 +27,8 @@ namespace Origin_creator.ViewModels
 
         public Visibility OriginMenuVisibility { get; private set; }
         public Visibility StartButtonsVisibility { get; private set; }
+        public Visibility ReadonlyModeVisibility { get; }
+        public bool ReadonlyMode { get; }
         public Origin LoadedOrigin { get; private set; }
 
         //Values of Origin
@@ -71,6 +73,8 @@ namespace Origin_creator.ViewModels
             this.OpenOriginCommand = new RelayCommand(this.SelectOriginToOpen, () => true);
             this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("",""), () => true);
             this.SaveOriginCommand = new RelayCommand(() => this.mainWindowModel.SaveOriginToJson(this.LoadedOrigin), () => this.TxtOriginName != null);
+            this.ReadonlyMode = true;
+            this.ReadonlyModeVisibility = Visibility.Hidden;
             this.mainWindowModel = new MainWindowModel();
         }
 

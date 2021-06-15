@@ -76,3 +76,4 @@ C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csproj.CopyCo
 C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.exe
 C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.pdb
 C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csproj.Fody.CopyLocal.cache
+C:\Projects\Origin-creator\Origin creator\bin\Debug\XamlInverter.dll

@@ -1,21 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Origin_creator.Classes;
+﻿using System.Collections.Generic;
+using Newtonsoft.Json;
 
 namespace Origin_creator
 {
     class Origin
     {
+        [JsonIgnore]//Json serializer will ignore this
         public string OriginNameCode { get; }
+        [JsonIgnore]
         public string OriginFolderPath { get; }
-        public string name { get; set; }//Variable names are as in JSON for easy converting
-        public string description;
-        public byte impact;
+
+        public List<string> powers;//Variable names are as in JSON for easy converting
         public string icon;
-        public List<string> powers;
+        public byte impact;
+        public string name { get; set; }
+        public string description;
 
 
         public Origin(string name, string originNameCode, string originFolderPath)
