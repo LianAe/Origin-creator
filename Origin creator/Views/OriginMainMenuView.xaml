@@ -171,7 +171,7 @@
                         <!--  Kräfte sichtbarkeit(versteckt Ja/Nein)  -->
                         <TextBlock Margin="0,0,5,0" Text="Hidden:" />
                         <CheckBox
-                            IsChecked="{Binding IsHidden}"
+                            IsChecked="{Binding IsPowerHidden}"
                             Background="#4E797A"
                             BorderBrush="#93C5C7"
                             BorderThickness="2" />
@@ -244,6 +244,7 @@
             Text="Powers" />
         <ListBox
             ItemsSource="{Binding ListPowers}"
+            SelectedItem="{Binding SelectedPower, Mode=OneWayToSource}"
             Grid.Row="2"
             Grid.Column="1"
             Margin="5,25,5,5"

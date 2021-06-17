@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using Newtonsoft.Json;
+using Origin_creator.Classes;
 
 namespace Origin_creator
 {
@@ -9,6 +10,8 @@ namespace Origin_creator
         public string OriginNameCode { get; }
         [JsonIgnore]
         public string OriginFolderPath { get; }
+        [JsonIgnore]
+        public List<Power> PowersList;
 
         public List<string> powers;//Variable names are as in JSON for easy converting
         public string icon;
@@ -23,6 +26,7 @@ namespace Origin_creator
             this.OriginNameCode = originNameCode;
             this.OriginFolderPath = originFolderPath;
             this.powers = new List<string>();
+            this.PowersList = new List<Power>();
         }
 
         public void SetValuesFromJson(dynamic originJsonValues)

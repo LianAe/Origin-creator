@@ -8,22 +8,24 @@ using System.Windows;
 using System.Windows.Forms;
 using Newtonsoft.Json;
 using Origin_creator.Classes;
+using Origin_creator.Models;
 using MessageBox = System.Windows.MessageBox;
 using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Origin_creator
 {
-    class MainWindowModel
+    class OriginFilesModel
     {
         //Fields
         private Origin openOrigin;
         public List<IconItem> iconsList { get; }
-        private string originJsonPath; 
+        private string originJsonPath;
+        private string powersFolderPath;
 
         //Constructor
-        public MainWindowModel()
+        public OriginFilesModel()
         {
-            this.iconsList = this.WriteIconListFromItemsList();
+            this.iconsList = DefaultDataModel.WriteIconListFromItemsList();
         }
 
         //Methods
@@ -33,19 +35,21 @@ namespace Origin_creator
             getFolder.ShowDialog();
             this.openOrigin = new Origin(
                 Path.GetFileName(getFolder.SelectedPath), //Returns text after the last '/'
-                Path.GetFileName(getFolder.SelectedPath).Replace(" ", "_").ToLower(), //Converting the folder name because the subfolders shouldn't use spaces or uppercase.
+                Path.GetFileName(getFolder.SelectedPath).Replace("_origin", "").Replace(" ", "_").ToLower(),//Converting the folder name because the subfolders shouldn't use spaces or uppercase.
+                                                                                                            //Sometimes the folder has _origin at the end wich needs to be removed.
                 getFolder.SelectedPath
                 );
-            originJsonPath = this.openOrigin.OriginFolderPath + $"\\data\\{this.openOrigin.OriginNameCode}\\origins\\{this.openOrigin.OriginNameCode}.json";
+            this.originJsonPath = this.openOrigin.OriginFolderPath + $"\\data\\{this.openOrigin.OriginNameCode}\\origins\\{this.openOrigin.OriginNameCode}.json";
+            this.powersFolderPath = this.openOrigin.OriginFolderPath + $"\\data\\{this.openOrigin.OriginNameCode}\\powers";
         }
 
         public bool IsFolderDataPack()
         {
             if (//Checking if all the needed files or folders are where they should be.
                 File.Exists(this.openOrigin.OriginFolderPath + "\\pack.mcmeta") && 
-                Directory.Exists(this.openOrigin.OriginFolderPath + $"\\data\\{this.openOrigin.OriginNameCode}\\powers") && 
+                Directory.Exists(this.powersFolderPath) && 
                 File.Exists(this.openOrigin.OriginFolderPath + "\\data\\origins\\origin_layers\\origin.json") &&
-                File.Exists(this.openOrigin.OriginFolderPath + $"\\data\\{this.openOrigin.OriginNameCode}\\origins\\{this.openOrigin.OriginNameCode}.json"))
+                File.Exists(this.originJsonPath))
             {
                 return true;
             }
@@ -59,19 +63,20 @@ namespace Origin_creator
             //File with the fields: name, description, icon, impact, powers
             dynamic originJsonDeserialized = JsonConvert.DeserializeObject(originJsonText);
             this.openOrigin.SetValuesFromJson(originJsonDeserialized);
+            //Load all powers from the Origin wich aren't from the base Mod
+            foreach (string originPower in this.openOrigin.powers.Where(pw => !pw.StartsWith("origin")))
+            {
+                this.openOrigin.PowersList.Add(LoadPower(originPower));
+            }
             return this.openOrigin;
         }
 
-        public List<IconItem> WriteIconListFromItemsList()
+        public Power LoadPower(string powerName)
         {
-            List<IconItem> itemsList = new List<IconItem>();
-            string iconListFileText = File.ReadAllText(".\\items.json");
-            dynamic iconList = JsonConvert.DeserializeObject(iconListFileText);
-            foreach (var item in iconList)
-            {
-                itemsList.Add(new IconItem(item.name.ToString(), item.type.ToString() + "-" + item.meta.ToString()));
-            }
-            return itemsList;
+            string powerJonsText = File.ReadAllText(this.powersFolderPath + "\\" + powerName.Substring(powerName.IndexOf(":") + 1) + ".json");
+            Power deserializedPower = JsonConvert.DeserializeObject<Power>(powerJonsText);
+            deserializedPower.powerJsonName = powerName;
+            return deserializedPower;
         }
 
         public void SaveOriginToJson(Origin origin)

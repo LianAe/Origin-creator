@@ -108,7 +108,8 @@
     </ApplicationDefinition>
     <Compile Include="Classes\IconItem.cs" />
     <Compile Include="Classes\Power.cs" />
-    <Compile Include="Models\MainWindowModel.cs" />
+    <Compile Include="Models\DefaultDataModel.cs" />
+    <Compile Include="Models\OriginFilesModel.cs" />
     <Compile Include="Classes\Origin.cs" />
     <Compile Include="Classes\RelayCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
@@ -166,6 +167,64 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="vanillaPowers\aerial_combatant.json" />
+    <None Include="vanillaPowers\air_from_potions.json" />
+    <None Include="vanillaPowers\aquatic.json" />
+    <None Include="vanillaPowers\aqua_affinity.json" />
+    <None Include="vanillaPowers\arcane_skin.json" />
+    <None Include="vanillaPowers\arthropod.json" />
+    <None Include="vanillaPowers\burning_wrath.json" />
+    <None Include="vanillaPowers\burn_in_daylight.json" />
+    <None Include="vanillaPowers\carnivore.json" />
+    <None Include="vanillaPowers\cat_vision.json" />
+    <None Include="vanillaPowers\claustrophobia.json" />
+    <None Include="vanillaPowers\climbing.json" />
+    <None Include="vanillaPowers\conduit_power_on_land.json" />
+    <None Include="vanillaPowers\damage_from_potions.json" />
+    <None Include="vanillaPowers\damage_from_snowballs.json" />
+    <None Include="vanillaPowers\elytra.json" />
+    <None Include="vanillaPowers\ender_particles.json" />
+    <None Include="vanillaPowers\end_spawn.json" />
+    <None Include="vanillaPowers\extra_reach.json" />
+    <None Include="vanillaPowers\fall_immunity.json" />
+    <None Include="vanillaPowers\fire_immunity.json" />
+    <None Include="vanillaPowers\flame_particles.json" />
+    <None Include="vanillaPowers\fragile.json" />
+    <None Include="vanillaPowers\fresh_air.json" />
+    <None Include="vanillaPowers\hotblooded.json" />
+    <None Include="vanillaPowers\hunger_over_time.json" />
+    <None Include="vanillaPowers\invisibility.json" />
+    <None Include="vanillaPowers\launch_into_air.json" />
+    <None Include="vanillaPowers\lay_eggs.json" />
+    <None Include="vanillaPowers\light_armor.json" />
+    <None Include="vanillaPowers\like_water.json" />
+    <None Include="vanillaPowers\master_of_webs.json" />
+    <None Include="vanillaPowers\more_exhaustion.json" />
+    <None Include="vanillaPowers\more_kinetic_damage.json" />
+    <None Include="vanillaPowers\natural_armor.json" />
+    <None Include="vanillaPowers\nether_spawn.json" />
+    <None Include="vanillaPowers\nine_lives.json" />
+    <None Include="vanillaPowers\no_cobweb_slowdown.json" />
+    <None Include="vanillaPowers\no_shield.json" />
+    <None Include="vanillaPowers\phantomize.json" />
+    <None Include="vanillaPowers\phasing.json" />
+    <None Include="vanillaPowers\pumpkin_hate.json" />
+    <None Include="vanillaPowers\scare_creepers.json" />
+    <None Include="vanillaPowers\shulker_inventory.json" />
+    <None Include="vanillaPowers\slow_falling.json" />
+    <None Include="vanillaPowers\sprint_jump.json" />
+    <None Include="vanillaPowers\strong_arms.json" />
+    <None Include="vanillaPowers\strong_arms_break_speed.json" />
+    <None Include="vanillaPowers\swim_speed.json" />
+    <None Include="vanillaPowers\tailwind.json" />
+    <None Include="vanillaPowers\throw_ender_pearl.json" />
+    <None Include="vanillaPowers\translucent.json" />
+    <None Include="vanillaPowers\vegetarian.json" />
+    <None Include="vanillaPowers\water_breathing.json" />
+    <None Include="vanillaPowers\water_vision.json" />
+    <None Include="vanillaPowers\water_vulnerability.json" />
+    <None Include="vanillaPowers\weak_arms.json" />
+    <None Include="vanillaPowers\webbing.json" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

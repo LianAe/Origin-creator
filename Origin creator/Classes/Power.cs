@@ -3,21 +3,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Newtonsoft.Json;
 
 namespace Origin_creator.Classes
 {
     class Power
     {
-        private string powerName;
-        private string powerDescription;
-        private string powerType;
-        private bool hidden;
+        [JsonIgnore]
+        public string powerJsonName;
 
-        public Power(string powerName, string powerDescription, string powerType, bool hidden)
+        //Property names are as in the Json
+        public string name;
+        public string description;
+        public string type;
+        public bool hidden;
+
+        public Power(string name, string description, string type, bool hidden)
         {
-            this.powerName = powerName;
-            this.powerDescription = powerDescription;
-            this.powerType = powerType;
+            this.name = name;
+            this.description = description;
+            this.type = type;
             this.hidden = hidden;
         }
     }
