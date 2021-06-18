@@ -362,7 +362,7 @@
                 Content="Delete Origin"
                 FontSize="20"
                 IsEnabled="False"
-                Foreground="White" />
+                Foreground="#98887E" />
         </StackPanel>
 
     </Grid>

@@ -57,7 +57,6 @@ C:\Projects\Origin-creator\Origin creator\bin\Debug\ro\Xceed.Wpf.AvalonDock.reso
 C:\Projects\Origin-creator\Origin creator\bin\Debug\ru\Xceed.Wpf.AvalonDock.resources.dll
 C:\Projects\Origin-creator\Origin creator\bin\Debug\sv\Xceed.Wpf.AvalonDock.resources.dll
 C:\Projects\Origin-creator\Origin creator\bin\Debug\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
-C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csprojAssemblyReference.cache
 C:\Projects\Origin-creator\Origin creator\obj\Debug\Views\MainWindowView.g.cs
 C:\Projects\Origin-creator\Origin creator\obj\Debug\Views\OriginMainMenuView.g.cs
 C:\Projects\Origin-creator\Origin creator\obj\Debug\Views\SelectablePowerView.g.cs
@@ -78,3 +77,4 @@ C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.pdb
 C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csproj.Fody.CopyLocal.cache
 C:\Projects\Origin-creator\Origin creator\bin\Debug\XamlInverter.dll
 C:\Projects\Origin-creator\Origin creator\bin\Debug\vanillaPowers\aerial_combatant.json
+C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csproj.AssemblyReference.cache

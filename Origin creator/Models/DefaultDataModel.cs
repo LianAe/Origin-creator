@@ -42,6 +42,9 @@ namespace Origin_creator.Models
         {
             Power deserializedPower = JsonConvert.DeserializeObject<Power>(File.ReadAllText(path));
             deserializedPower.powerJsonName = path.Substring(path.LastIndexOf('\\') + 1).Replace(".json", "");
+            if (deserializedPower.name == null)
+                deserializedPower.name = deserializedPower.powerJsonName;
+            
             return deserializedPower;
         }
     }
