@@ -102,12 +102,14 @@ namespace Origin_creator.ViewModels
 
             this.OpenOriginCommand = new RelayCommand(this.SelectOriginToOpen, () => true);
             this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("Coming soon","Not yet finished"), () => false);
-            this.SaveOriginCommand = new RelayCommand(() => this.originFilesModel.SaveOriginToJson(this.OpenOrigin), () => this.TxtOriginName != null);
+            this.SaveOriginCommand = new RelayCommand(() => this.SaveOpenOrigin(), () => this.TxtOriginName != null);
             this.EditingModeCommand = new RelayCommand(this.ChangeEditingMode, () => true);
 
             this.originFilesModel = new OriginFilesModel();
-            foreach (Power power in this.originFilesModel.VanillaPowers)//Fill listBox with powers you can choose.
-            {
+            
+            foreach (Power power in this.originFilesModel.VanillaPowers)
+                //Fill listBox with powers you can choose. 
+            {   //Dosen't work well because the name and descriptions are saved in an other file.
                 this.VanillaPowersToSelect.Add(new SelectablePowerViewModel(power.name, power.description, power));
             }
         }
@@ -182,18 +184,19 @@ namespace Origin_creator.ViewModels
                 this.TxtPowerName = openPower.name ?? this.SelectedPower.Substring(this.SelectedPower.IndexOf(":") + 1);
                 this.TxtPowerDescription = openPower.description ?? "No description";
                 this.TxtType = openPower.type;
-                this.TxtCondition = openPower.condition?.ToString();
+                this.TxtCondition = openPower.condition;
                 this.IsPowerHidden = openPower.hidden;
             }
         }
 
-        private void UpdateOpenOrigin()
+        private void SaveOpenOrigin()
         {
             // this.OpenOrigin.name = this.TxtOriginName;
             this.OpenOrigin.description = this.TxtOriginDescription;
             this.OpenOrigin.impact = this.impact;
-            //The json file needs a namespace infront of the icon, usualy "minecraft:"
+            //The json file needs a namespace in front of the icon, usually "minecraft:"
             this.OpenOrigin.icon = this.originFilesModel.IconsList.Find(ic => ic.ItemName == this.SelectedIcon).ItemNameId.Insert(0, "minecraft:");
+            this.originFilesModel.SaveOriginToJson(this.OpenOrigin);
         }
         private void UpdateIcon()
         {   //Sets the path of the Icon that is selected
