@@ -1,7 +1,9 @@
 {
   "ExpandedNodes": [
     "",
-    "\\Origin creator"
+    "\\Origin creator",
+    "\\Origin creator\\Views"
   ],
+  "SelectedNode": "\\Origin creator\\Views\\OriginMainMenuView.xaml",
   "PreviewInSolutionExplorer": false
 }

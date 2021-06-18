@@ -30,13 +30,23 @@ namespace Origin_creator.ViewModels
         public Visibility ReadonlyModeVisibility { get; set; } //Power selection is hidden in Readonly Mode
         public bool ReadonlyMode { get; private set; }
         public string BtnEditing { get; private set; }
+        public string BtnSaveChanges { get; set; }
         public Origin OpenOrigin { get; private set; }
 
         //Values of Origin
         public List<string> ListIconsName { get; set; }
         public string TxtOriginName { get; set; }
-        public string ItemIconPath { get; private set; }//Path for the Icon PNG
-        public string TxtOriginDescription { get; set; }
+        public string ItemIconPath { get; private set; } //Path for the Icon PNG
+
+        public string TxtOriginDescription
+        {
+            get => _txtOriginDescription;
+            set
+            {
+                _txtOriginDescription = value;
+                this.SavableValuesChanged();
+            } 
+        }
 
         public byte Impact
         {
@@ -51,6 +61,7 @@ namespace Origin_creator.ViewModels
                 {
                     this.impact = 3;
                 }
+                this.SavableValuesChanged();
             }
         }
 
@@ -61,6 +72,7 @@ namespace Origin_creator.ViewModels
             {
                 selectedIcon = value;
                 this.UpdateIcon();
+                this.SavableValuesChanged();
             } 
         }
 
@@ -90,6 +102,7 @@ namespace Origin_creator.ViewModels
         private byte impact;
         private string selectedPower;
         private string selectedIcon;
+        private string _txtOriginDescription;
 
         public MainWindowViewModel()
         {
@@ -99,6 +112,7 @@ namespace Origin_creator.ViewModels
             this.ReadonlyModeVisibility = Visibility.Collapsed;
             this.ReadonlyMode = true;
             this.BtnEditing = "Edit origin";
+            this.BtnSaveChanges = "Save";
 
             this.OpenOriginCommand = new RelayCommand(this.SelectOriginToOpen, () => true);
             this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("Coming soon","Not yet finished"), () => false);
@@ -164,6 +178,7 @@ namespace Origin_creator.ViewModels
             this.SelectedIcon = this.originFilesModel.IconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemName;
             this.ItemIconPath = this.originFilesModel.IconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemIconPath;
             this.ListPowers = this.OpenOrigin.powers;
+            this.BtnSaveChanges = this.BtnSaveChanges.Replace("*", "");
         }
 
         private void FillPowerValues()
@@ -197,11 +212,17 @@ namespace Origin_creator.ViewModels
             //The json file needs a namespace in front of the icon, usually "minecraft:"
             this.OpenOrigin.icon = this.originFilesModel.IconsList.Find(ic => ic.ItemName == this.SelectedIcon).ItemNameId.Insert(0, "minecraft:");
             this.originFilesModel.SaveOriginToJson(this.OpenOrigin);
+            this.BtnSaveChanges = this.BtnSaveChanges.Replace("*", "");
         }
         private void UpdateIcon()
         {   //Sets the path of the Icon that is selected
             this.ItemIconPath = this.originFilesModel.IconsList.Find(n => 
                 n.ItemName == this.SelectedIcon)?.ItemIconPath;
+        }
+
+        private void SavableValuesChanged()
+        {
+            this.BtnSaveChanges = "Save*";
         }
 
         public event PropertyChangedEventHandler PropertyChanged;

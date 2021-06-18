@@ -270,6 +270,7 @@
         </ListBox>
 
         <!--  Verfügbare Kräfte zum hinzufügen  -->
+        
         <TabControl
             Grid.Row="1"
             Grid.RowSpan="2"
@@ -309,7 +310,28 @@
                 </ListBox>
             </TabItem>
         </TabControl>
-<!--Button removed because they aren't yet usable-->
+        <!--Used to visualise that the selection isn't Implemented-->
+        <Rectangle 
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Margin="5"
+            IsHitTestVisible="False"
+            Visibility="{Binding ReadonlyModeVisibility}"
+            Fill="#80FFFFFF" />
+        <TextBlock
+            Grid.Row="1"
+            Grid.RowSpan="2"
+            Grid.Column="2"
+            Grid.ColumnSpan="2"
+            Margin="0,160,0,0"
+            HorizontalAlignment="Center"
+            FontSize="30"
+            Foreground="Black"
+            Text="Comming soon" 
+            Visibility="{Binding ReadonlyModeVisibility}"/>
+        <!--Button removed because they aren't yet usable-->
         <!--<Button 
             Grid.Row="2"
             Grid.Column="2"
@@ -353,10 +375,11 @@
             <Button
                 Margin="5"
                 Background="#4E797A"
-                Content="Save changes"
+                Content="{Binding BtnSaveChanges}"
                 FontSize="20"
                 Foreground="White"
-                Visibility="{Binding ReadonlyModeVisibility}" />
+                Visibility="{Binding ReadonlyModeVisibility}"
+                Command="{Binding SaveOriginCommand}"/>
             <Button
                 Margin="5"
                 Background="#874444"
