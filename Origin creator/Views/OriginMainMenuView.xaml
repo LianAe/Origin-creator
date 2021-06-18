@@ -309,7 +309,8 @@
                 </ListBox>
             </TabItem>
         </TabControl>
-        <Button
+<!--Button removed because they aren't yet usable-->
+        <!--<Button 
             Grid.Row="2"
             Grid.Column="2"
             MinWidth="40"
@@ -334,7 +335,7 @@
             FontSize="30"
             Foreground="White" 
             IsEnabled="False"
-            Visibility="{Binding ReadonlyModeVisibility}"/>
+            Visibility="{Binding ReadonlyModeVisibility}"/>-->
 
         <!--  Die Button zum verlassen, speichern und löschen  -->
         <StackPanel
