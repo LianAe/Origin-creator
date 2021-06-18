@@ -77,3 +77,4 @@ C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.exe
 C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.pdb
 C:\Projects\Origin-creator\Origin creator\obj\Debug\Origin creator.csproj.Fody.CopyLocal.cache
 C:\Projects\Origin-creator\Origin creator\bin\Debug\XamlInverter.dll
+C:\Projects\Origin-creator\Origin creator\bin\Debug\vanillaPowers\aerial_combatant.json

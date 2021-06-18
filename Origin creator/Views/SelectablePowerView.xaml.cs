@@ -18,7 +18,7 @@ namespace Origin_creator
     /// <summary>
     /// Interaction logic for SelectablePower.xaml
     /// </summary>
-    public partial class SelectablePower : ListBoxItem
+    public partial class SelectablePower
     {
         public SelectablePower()
         {

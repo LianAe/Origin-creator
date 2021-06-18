@@ -114,6 +114,7 @@
     <Compile Include="Classes\RelayCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\SelectablePowerViewModel.cs" />
     <Compile Include="Views\SelectablePowerView.xaml.cs">
       <DependentUpon>SelectablePowerView.xaml</DependentUpon>
     </Compile>
@@ -167,69 +168,184 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="vanillaPowers\aerial_combatant.json" />
-    <None Include="vanillaPowers\air_from_potions.json" />
-    <None Include="vanillaPowers\aquatic.json" />
-    <None Include="vanillaPowers\aqua_affinity.json" />
-    <None Include="vanillaPowers\arcane_skin.json" />
-    <None Include="vanillaPowers\arthropod.json" />
-    <None Include="vanillaPowers\burning_wrath.json" />
-    <None Include="vanillaPowers\burn_in_daylight.json" />
-    <None Include="vanillaPowers\carnivore.json" />
-    <None Include="vanillaPowers\cat_vision.json" />
-    <None Include="vanillaPowers\claustrophobia.json" />
-    <None Include="vanillaPowers\climbing.json" />
-    <None Include="vanillaPowers\conduit_power_on_land.json" />
-    <None Include="vanillaPowers\damage_from_potions.json" />
-    <None Include="vanillaPowers\damage_from_snowballs.json" />
-    <None Include="vanillaPowers\elytra.json" />
-    <None Include="vanillaPowers\ender_particles.json" />
-    <None Include="vanillaPowers\end_spawn.json" />
-    <None Include="vanillaPowers\extra_reach.json" />
-    <None Include="vanillaPowers\fall_immunity.json" />
-    <None Include="vanillaPowers\fire_immunity.json" />
-    <None Include="vanillaPowers\flame_particles.json" />
-    <None Include="vanillaPowers\fragile.json" />
-    <None Include="vanillaPowers\fresh_air.json" />
-    <None Include="vanillaPowers\hotblooded.json" />
-    <None Include="vanillaPowers\hunger_over_time.json" />
-    <None Include="vanillaPowers\invisibility.json" />
-    <None Include="vanillaPowers\launch_into_air.json" />
-    <None Include="vanillaPowers\lay_eggs.json" />
-    <None Include="vanillaPowers\light_armor.json" />
-    <None Include="vanillaPowers\like_water.json" />
-    <None Include="vanillaPowers\master_of_webs.json" />
-    <None Include="vanillaPowers\more_exhaustion.json" />
-    <None Include="vanillaPowers\more_kinetic_damage.json" />
-    <None Include="vanillaPowers\natural_armor.json" />
-    <None Include="vanillaPowers\nether_spawn.json" />
-    <None Include="vanillaPowers\nine_lives.json" />
-    <None Include="vanillaPowers\no_cobweb_slowdown.json" />
-    <None Include="vanillaPowers\no_shield.json" />
-    <None Include="vanillaPowers\phantomize.json" />
-    <None Include="vanillaPowers\phasing.json" />
-    <None Include="vanillaPowers\pumpkin_hate.json" />
-    <None Include="vanillaPowers\scare_creepers.json" />
-    <None Include="vanillaPowers\shulker_inventory.json" />
-    <None Include="vanillaPowers\slow_falling.json" />
-    <None Include="vanillaPowers\sprint_jump.json" />
-    <None Include="vanillaPowers\strong_arms.json" />
-    <None Include="vanillaPowers\strong_arms_break_speed.json" />
-    <None Include="vanillaPowers\swim_speed.json" />
-    <None Include="vanillaPowers\tailwind.json" />
-    <None Include="vanillaPowers\throw_ender_pearl.json" />
-    <None Include="vanillaPowers\translucent.json" />
-    <None Include="vanillaPowers\vegetarian.json" />
-    <None Include="vanillaPowers\water_breathing.json" />
-    <None Include="vanillaPowers\water_vision.json" />
-    <None Include="vanillaPowers\water_vulnerability.json" />
-    <None Include="vanillaPowers\weak_arms.json" />
-    <None Include="vanillaPowers\webbing.json" />
+    <EmbeddedResource Include="vanillaPowers\aerial_combatant.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <Resource Include="vanillaPowers\air_from_potions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\aquatic.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\aqua_affinity.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\arcane_skin.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\arthropod.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\burning_wrath.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\burn_in_daylight.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\carnivore.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\cat_vision.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\claustrophobia.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\climbing.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\conduit_power_on_land.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\damage_from_potions.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\damage_from_snowballs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\elytra.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\ender_particles.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\end_spawn.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\extra_reach.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\fall_immunity.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\fire_immunity.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\flame_particles.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\fragile.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\fresh_air.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\hotblooded.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\hunger_over_time.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\invisibility.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\launch_into_air.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\lay_eggs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\light_armor.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\like_water.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\master_of_webs.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\more_exhaustion.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\more_kinetic_damage.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\natural_armor.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\nether_spawn.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\nine_lives.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\no_cobweb_slowdown.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\no_shield.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\phantomize.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\phasing.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\pumpkin_hate.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\scare_creepers.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\shulker_inventory.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\slow_falling.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\sprint_jump.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\strong_arms.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\strong_arms_break_speed.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\swim_speed.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\tailwind.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\throw_ender_pearl.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\translucent.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\vegetarian.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\water_breathing.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\water_vision.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\water_vulnerability.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\weak_arms.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="vanillaPowers\webbing.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Resource Include="itemIcons\0-0.png" />
     <Resource Include="itemIcons\1-0.png" />

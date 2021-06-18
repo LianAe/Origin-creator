@@ -1,4 +1,6 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -20,11 +22,14 @@ namespace Origin_creator.ViewModels
         public ICommand OpenOriginCommand { get;}
         public ICommand CreateNewOriginCommand { get; }
         public ICommand SaveOriginCommand { get; }
+        public ICommand EditingModeCommand { get; }//Button to go in editing mode (leaving ReadonlyMode)
+        public ObservableCollection<SelectablePowerViewModel> VanillaPowersToSelect { get; set; }
 
         public Visibility OriginMenuVisibility { get; private set; }//Menu is only visible if Origin is open.
         public Visibility StartButtonsVisibility { get; private set; }//Buttons are only visible if no Origin is open.
-        public Visibility ReadonlyModeVisibility { get; }//Power selection is hidden in Readonly Mode
-        public bool ReadonlyMode { get; }
+        public Visibility ReadonlyModeVisibility { get; set; } //Power selection is hidden in Readonly Mode
+        public bool ReadonlyMode { get; private set; }
+        public string BtnEditing { get; private set; }
         public Origin OpenOrigin { get; private set; }
 
         //Values of Origin
@@ -48,7 +53,17 @@ namespace Origin_creator.ViewModels
                 }
             }
         }
-        public string SelectedIcon { get; set; }
+
+        public string SelectedIcon
+        {
+            get => selectedIcon;
+            set
+            {
+                selectedIcon = value;
+                this.UpdateIcon();
+            } 
+        }
+
         public List<string> ListPowers { get; set; }
 
         public string SelectedPower
@@ -57,7 +72,8 @@ namespace Origin_creator.ViewModels
             set
             {
                 this.selectedPower = value;
-                this.FillPowerValues();
+                if (value != null)
+                    this.FillPowerValues();
             } 
         }
 
@@ -66,25 +82,50 @@ namespace Origin_creator.ViewModels
         public string TxtPowerDescription { get; set; }
         public string TxtType { get; set; }
         public bool IsPowerHidden { get; set; }
+        public string TxtCondition { get; set; }
 
 
 
         private OriginFilesModel originFilesModel;
         private byte impact;
         private string selectedPower;
+        private string selectedIcon;
 
         public MainWindowViewModel()
         {
+            this.VanillaPowersToSelect = new ObservableCollection<SelectablePowerViewModel>();
             this.StartButtonsVisibility = Visibility.Visible;
             this.OriginMenuVisibility = Visibility.Hidden;
-            this.ReadonlyModeVisibility = Visibility.Hidden;
+            this.ReadonlyModeVisibility = Visibility.Collapsed;
             this.ReadonlyMode = true;
+            this.BtnEditing = "Edit origin";
 
             this.OpenOriginCommand = new RelayCommand(this.SelectOriginToOpen, () => true);
             this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("Coming soon","Not yet finished"), () => false);
             this.SaveOriginCommand = new RelayCommand(() => this.originFilesModel.SaveOriginToJson(this.OpenOrigin), () => this.TxtOriginName != null);
+            this.EditingModeCommand = new RelayCommand(this.ChangeEditingMode, () => true);
 
             this.originFilesModel = new OriginFilesModel();
+            foreach (Power power in this.originFilesModel.VanillaPowers)//Fill listBox with powers you can choose.
+            {
+                this.VanillaPowersToSelect.Add(new SelectablePowerViewModel(power.name, power.description, power));
+            }
+        }
+
+        private void ChangeEditingMode()
+        {
+            if (ReadonlyMode)
+            {
+                ReadonlyMode = false;
+                this.ReadonlyModeVisibility = Visibility.Visible;
+                this.BtnEditing = "Exit editing mode";
+            }
+            else if (!ReadonlyMode)
+            {
+                ReadonlyMode = true;
+                this.ReadonlyModeVisibility = Visibility.Collapsed;
+                this.BtnEditing = "Edit origin";
+            }
         }
 
         private void SelectOriginToOpen()
@@ -115,31 +156,50 @@ namespace Origin_creator.ViewModels
             this.TxtOriginName = this.OpenOrigin.name;
             this.TxtOriginDescription = this.OpenOrigin.description;
             this.Impact = this.OpenOrigin.impact;
-            this.ListIconsName = this.originFilesModel.iconsList.Select(i => i.ItemName).ToList();
+            this.ListIconsName = this.originFilesModel.IconsList.Select(i => i.ItemName).ToList();
             int startIntIcon = this.OpenOrigin.icon.LastIndexOf(":") + 1;
             //Exact item name is searched by nameId in the iconlist
-            this.SelectedIcon = this.originFilesModel.iconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemName;
-            this.ItemIconPath = this.originFilesModel.iconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemIconPath;
+            this.SelectedIcon = this.originFilesModel.IconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemName;
+            this.ItemIconPath = this.originFilesModel.IconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemIconPath;
             this.ListPowers = this.OpenOrigin.powers;
         }
 
         private void FillPowerValues()
         {
-            if (!this.SelectedPower.StartsWith("origin:"))
-            {
-                Power openPower = this.OpenOrigin.PowersList.Find(pw => pw.powerJsonName == this.SelectedPower);
+            Power openPower;
+            if (this.SelectedPower.StartsWith("origins:"))
+            {   //Geting the power values from the vanilla list if it starts with "origin:"
+                openPower = this.originFilesModel.VanillaPowers.Find(pw => pw.powerJsonName == this.SelectedPower.Replace("origins:", ""));
+            }
+            else
+            {   
+                openPower = this.OpenOrigin.PowersList.Find(pw => pw.powerJsonName == this.SelectedPower.Substring(this.SelectedPower.IndexOf(":") + 1));
+            }
 
-                if (openPower.name != null)//If the Origin has no name, the file name is used.
-                    this.TxtPowerName = openPower.name;
-                else
-                    this.TxtPowerName = this.SelectedPower.Substring(this.SelectedPower.IndexOf(":") + 1);
-                
-                this.TxtPowerDescription = openPower.description;
+            if (openPower != null)
+            {
+                //If the Origin has no name, the file name is used.
+                this.TxtPowerName = openPower.name ?? this.SelectedPower.Substring(this.SelectedPower.IndexOf(":") + 1);
+                this.TxtPowerDescription = openPower.description ?? "No description";
                 this.TxtType = openPower.type;
+                this.TxtCondition = openPower.condition?.ToString();
                 this.IsPowerHidden = openPower.hidden;
             }
         }
 
+        private void UpdateOpenOrigin()
+        {
+            // this.OpenOrigin.name = this.TxtOriginName;
+            this.OpenOrigin.description = this.TxtOriginDescription;
+            this.OpenOrigin.impact = this.impact;
+            //The json file needs a namespace infront of the icon, usualy "minecraft:"
+            this.OpenOrigin.icon = this.originFilesModel.IconsList.Find(ic => ic.ItemName == this.SelectedIcon).ItemNameId.Insert(0, "minecraft:");
+        }
+        private void UpdateIcon()
+        {   //Sets the path of the Icon that is selected
+            this.ItemIconPath = this.originFilesModel.IconsList.Find(n => 
+                n.ItemName == this.SelectedIcon)?.ItemIconPath;
+        }
 
         public event PropertyChangedEventHandler PropertyChanged;
 

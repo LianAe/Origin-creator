@@ -18,14 +18,16 @@ namespace Origin_creator
     {
         //Fields
         private Origin openOrigin;
-        public List<IconItem> iconsList { get; }
+        public List<IconItem> IconsList { get; }
+        public List<Power> VanillaPowers { get; }
         private string originJsonPath;
         private string powersFolderPath;
 
         //Constructor
         public OriginFilesModel()
         {
-            this.iconsList = DefaultDataModel.WriteIconListFromItemsList();
+            this.IconsList = DefaultDataModel.WriteIconListFromItemsList();
+            this.VanillaPowers = DefaultDataModel.ReadVanillaPowers();
         }
 
         //Methods
@@ -64,7 +66,7 @@ namespace Origin_creator
             dynamic originJsonDeserialized = JsonConvert.DeserializeObject(originJsonText);
             this.openOrigin.SetValuesFromJson(originJsonDeserialized);
             //Load all powers from the Origin wich aren't from the base Mod
-            foreach (string originPower in this.openOrigin.powers.Where(pw => !pw.StartsWith("origin")))
+            foreach (string originPower in this.openOrigin.powers.Where(pw => !pw.StartsWith("origins")))
             {
                 this.openOrigin.PowersList.Add(LoadPower(originPower));
             }
@@ -73,10 +75,8 @@ namespace Origin_creator
 
         public Power LoadPower(string powerName)
         {
-            string powerJonsText = File.ReadAllText(this.powersFolderPath + "\\" + powerName.Substring(powerName.IndexOf(":") + 1) + ".json");
-            Power deserializedPower = JsonConvert.DeserializeObject<Power>(powerJonsText);
-            deserializedPower.powerJsonName = powerName;
-            return deserializedPower;
+            return DefaultDataModel.ReadPowerFile(this.powersFolderPath + "\\" +
+                                                  powerName.Substring(powerName.IndexOf(":") + 1) + ".json");
         }
 
         public void SaveOriginToJson(Origin origin)

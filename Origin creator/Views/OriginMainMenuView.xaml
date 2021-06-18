@@ -58,6 +58,12 @@
             <RowDefinition Height="40" />
         </Grid.RowDefinitions>
 
+        <Grid.Resources>
+            <DataTemplate DataType="{x:Type viewModels:SelectablePowerViewModel}">
+                <local:SelectablePower/>
+            </DataTemplate>
+        </Grid.Resources>
+
         <!--  Origin Name  -->
         <StackPanel Orientation="Horizontal" Grid.ColumnSpan="4">
             <TextBlock
@@ -123,7 +129,7 @@
                 <!--  Name  -->
                 <RowDefinition Height="*" />
                 <!--  Werte  -->
-                <RowDefinition Height="80" />
+                <RowDefinition Height="80"/>
                 <!--  Bearbeitungs buttons  -->
             </Grid.RowDefinitions>
 
@@ -156,7 +162,7 @@
                             TextWrapping="Wrap" />
                     </StackPanel>
 
-                    <StackPanel Margin="5">
+                    <StackPanel Margin="5" VerticalAlignment="Bottom">
                         <!--  Kräfte Typ  -->
                         <TextBlock Text="Type" />
                         <TextBox
@@ -167,7 +173,18 @@
                             Text="{Binding TxtType}" />
                     </StackPanel>
 
-                    <StackPanel Margin="5" Orientation="Horizontal">
+                    <StackPanel Margin="5" VerticalAlignment="Bottom">
+                        <!--  Kräfte Voraussetzung  -->
+                        <TextBlock Text="Condition" />
+                        <TextBox
+                            MinWidth="100"
+                            Background="#4E797A"
+                            BorderBrush="#93C5C7"
+                            BorderThickness="2"
+                            Text="{Binding TxtCondition}" />
+                    </StackPanel>
+
+                    <StackPanel Margin="5" Orientation="Horizontal" VerticalAlignment="Bottom">
                         <!--  Kräfte sichtbarkeit(versteckt Ja/Nein)  -->
                         <TextBlock Margin="0,0,5,0" Text="Hidden:" />
                         <CheckBox
@@ -263,29 +280,11 @@
             Visibility="{Binding ReadonlyModeVisibility}">
             <TabItem Header="Vanilla powers">
                 <!--  Schon existirende Kräfte vom Mod  -->
-                <ListBox
+                <ScrollViewer
                     Background="#474747"
-                    Foreground="White"
-                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
-                    <local:SelectablePower />
-
-                    <ListBoxItem
-                        Margin="5"
-                        HorizontalContentAlignment="Center"
-                        Background="#4E797A">
-                        <StackPanel>
-                            <TextBlock
-                                FontSize="20"
-                                Text="Gills"
-                                TextAlignment="Center" />
-                            <TextBlock
-                                Text="You can breathe underwater, but not on land."
-                                TextAlignment="Justify"
-                                TextWrapping="Wrap" />
-                        </StackPanel>
-                    </ListBoxItem>
-
-                </ListBox>
+                    Foreground="White">
+                    <ItemsControl ItemsSource="{Binding VanillaPowersToSelect}"/>
+                </ScrollViewer>
             </TabItem>
             <TabItem Header="Custom powers" IsEnabled="False">
                 <!--  Kräfte die man selbst gemacht hat  -->
@@ -344,16 +343,17 @@
             <Button
                 Margin="5"
                 Background="#4E797A"
-                Content="Exit editing"
+                Content="{Binding BtnEditing}"
                 FontSize="20"
-                Foreground="White" />
+                Foreground="White"
+                Command="{Binding EditingModeCommand}"/>
             <Button
                 Margin="5"
                 Background="#4E797A"
                 Content="Save changes"
                 FontSize="20"
                 Foreground="White"
-                Visibility="{Binding ReadonlyMode}" />
+                Visibility="{Binding ReadonlyModeVisibility}" />
             <Button
                 Margin="5"
                 Background="#874444"
