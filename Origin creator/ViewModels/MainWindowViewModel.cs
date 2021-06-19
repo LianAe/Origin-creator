@@ -12,11 +12,6 @@ using MessageBox = System.Windows.MessageBox;
 
 namespace Origin_creator.ViewModels
 {
-    /*
-    public static class GlobalVariables
-    {
-        public static string IconListPath = ".\\items\\";
-    }*/
     class MainWindowViewModel : INotifyPropertyChanged
     {
         public ICommand OpenOriginCommand { get;}
@@ -31,7 +26,7 @@ namespace Origin_creator.ViewModels
         public bool ReadonlyMode { get; private set; }
         public string BtnEditing { get; private set; }
         public string BtnSaveChanges { get; set; }
-        public Origin OpenOrigin { get; private set; }
+        private Origin OpenOrigin { get; set; }
 
         //Values of Origin
         public List<string> ListIconsName { get; set; }
@@ -206,7 +201,7 @@ namespace Origin_creator.ViewModels
 
         private void SaveOpenOrigin()
         {
-            // this.OpenOrigin.name = this.TxtOriginName;
+            // this.openOrigin.name = this.TxtOriginName;
             this.OpenOrigin.description = this.TxtOriginDescription;
             this.OpenOrigin.impact = this.impact;
             //The json file needs a namespace in front of the icon, usually "minecraft:"
