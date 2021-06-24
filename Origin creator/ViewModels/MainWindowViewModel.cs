@@ -18,6 +18,7 @@ namespace Origin_creator.ViewModels
         public ICommand CreateNewOriginCommand { get; }
         public ICommand SaveOriginCommand { get; }
         public ICommand EditingModeCommand { get; }//Button to go in editing mode (leaving ReadonlyMode)
+        public ICommand AddPowerCommand { get; }
         public ObservableCollection<SelectablePowerViewModel> VanillaPowersToSelect { get; set; }
 
         public Visibility OriginMenuVisibility { get; private set; }//Menu is only visible if Origin is open.
@@ -27,6 +28,7 @@ namespace Origin_creator.ViewModels
         public string BtnEditing { get; private set; }
         public string BtnSaveChanges { get; set; }
         private Origin OpenOrigin { get; set; }
+        public SelectablePowerViewModel SelectedVanillaPower { get; set; }
 
         //Values of Origin
         public List<string> ListIconsName { get; set; }
@@ -113,6 +115,7 @@ namespace Origin_creator.ViewModels
             this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("Coming soon","Not yet finished"), () => false);
             this.SaveOriginCommand = new RelayCommand(() => this.SaveOpenOrigin(), () => this.TxtOriginName != null);
             this.EditingModeCommand = new RelayCommand(this.ChangeEditingMode, () => true);
+            this.AddPowerCommand = new RelayCommand(this.AddPowerToOrigin, () => true);
 
             this.originFilesModel = new OriginFilesModel();
             
@@ -172,8 +175,8 @@ namespace Origin_creator.ViewModels
             //Exact item name is searched by nameId in the iconlist
             this.SelectedIcon = this.originFilesModel.IconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemName;
             this.ItemIconPath = this.originFilesModel.IconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemIconPath;
-            this.ListPowers = this.OpenOrigin.powers;
             this.BtnSaveChanges = this.BtnSaveChanges.Replace("*", "");
+            this.UpdatePowerLists();
         }
 
         private void FillPowerValues()
@@ -213,6 +216,28 @@ namespace Origin_creator.ViewModels
         {   //Sets the path of the Icon that is selected
             this.ItemIconPath = this.originFilesModel.IconsList.Find(n => 
                 n.ItemName == this.SelectedIcon)?.ItemIconPath;
+        }
+        private void AddPowerToOrigin()
+        {
+            string powerToAddName = this.SelectedVanillaPower.TxtName.Insert(0, "origins:");
+            this.OpenOrigin.powers.Add(powerToAddName);
+            this.UpdatePowerLists();
+        }
+
+        private void UpdatePowerLists()//Updates VanillaPowers and Powers of the Origin
+        {
+            this.ListPowers = new List<string>(this.OpenOrigin.powers);
+            foreach (string power in OpenOrigin.powers.Where(pw => pw.StartsWith("origins:")))
+            {
+                try
+                {
+                    this.VanillaPowersToSelect.Remove(this.VanillaPowersToSelect.Single(pw => pw.TxtName.Equals(power.Replace("origins:", ""))));
+                }
+                catch (InvalidOperationException e)
+                {
+
+                }
+            }
         }
 
         private void SavableValuesChanged()

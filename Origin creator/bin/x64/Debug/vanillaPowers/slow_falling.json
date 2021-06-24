@@ -1,0 +1,32 @@
+{
+  "type": "origins:simple",
+  "condition": {
+    "type": "origins:or",
+    "conditions": [
+      {
+        "type": "origins:and",
+        "conditions": [
+          {
+            "type": "origins:sneaking"
+          },
+          {
+            "type": "origins:fall_flying"
+          }
+        ]
+      },
+      {
+        "type": "origins:and",
+        "conditions": [
+          {
+            "type": "origins:sneaking",
+            "inverted": true
+          },
+          {
+            "type": "origins:fall_flying",
+            "inverted": true
+          }
+        ]
+      }
+    ]
+  }
+}

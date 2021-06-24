@@ -261,7 +261,7 @@
             Text="Powers" />
         <ListBox
             ItemsSource="{Binding ListPowers}"
-            SelectedItem="{Binding SelectedPower, Mode=OneWayToSource}"
+            SelectedItem="{Binding SelectedPower}"
             Grid.Row="2"
             Grid.Column="1"
             Margin="5,25,5,5"
@@ -281,11 +281,14 @@
             Visibility="{Binding ReadonlyModeVisibility}">
             <TabItem Header="Vanilla powers">
                 <!--  Schon existirende Kräfte vom Mod  -->
-                <ScrollViewer
+                <ListBox 
                     Background="#474747"
-                    Foreground="White">
-                    <ItemsControl ItemsSource="{Binding VanillaPowersToSelect}"/>
-                </ScrollViewer>
+                    Foreground="White" 
+                    ItemsSource="{Binding VanillaPowersToSelect}"
+                    SelectedItem="{Binding SelectedVanillaPower}"
+                    HorizontalContentAlignment="Stretch"
+                    ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                </ListBox>
             </TabItem>
             <TabItem Header="Custom powers" IsEnabled="False">
                 <!--  Kräfte die man selbst gemacht hat  -->
@@ -311,7 +314,7 @@
             </TabItem>
         </TabControl>
         <!--Used to visualise that the selection isn't Implemented-->
-        <Rectangle 
+        <!--<Rectangle 
             Grid.Row="1"
             Grid.RowSpan="2"
             Grid.Column="2"
@@ -330,9 +333,9 @@
             FontSize="30"
             Foreground="Black"
             Text="Comming soon" 
-            Visibility="{Binding ReadonlyModeVisibility}"/>
+            Visibility="{Binding ReadonlyModeVisibility}"/>-->
         <!--Button removed because they aren't yet usable-->
-        <!--<Button 
+        <Button 
             Grid.Row="2"
             Grid.Column="2"
             MinWidth="40"
@@ -343,8 +346,8 @@
             Content="❮"
             FontSize="30"
             Foreground="White" 
-            IsEnabled="False"
-            Visibility="{Binding ReadonlyModeVisibility}"/>
+            Visibility="{Binding ReadonlyModeVisibility}"
+            Command="{Binding AddPowerCommand}"/>
         <Button
             Grid.Row="2"
             Grid.Column="3"
@@ -357,7 +360,7 @@
             FontSize="30"
             Foreground="White" 
             IsEnabled="False"
-            Visibility="{Binding ReadonlyModeVisibility}"/>-->
+            Visibility="{Binding ReadonlyModeVisibility}"/>
 
         <!--  Die Button zum verlassen, speichern und löschen  -->
         <StackPanel

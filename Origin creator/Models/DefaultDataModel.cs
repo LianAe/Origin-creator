@@ -29,7 +29,7 @@ namespace Origin_creator.Models
         public static List<Power> ReadVanillaPowers()
         {
             var test = Directory.GetDirectories(".");
-            string[] vanillaPowerFiles = Directory.GetFiles("C:\\Projects\\Origin-creator\\Origin creator\\vanillaPowers\\");//Static path for now.
+            string[] vanillaPowerFiles = Directory.GetFiles(".\\vanillaPowers\\");//Static path for now.
             List <Power> vanillaPowers = new List<Power>();
             foreach (string powerFile in vanillaPowerFiles)
             {
