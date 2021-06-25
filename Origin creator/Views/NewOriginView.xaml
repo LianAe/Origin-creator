@@ -14,6 +14,7 @@
         </Grid.ColumnDefinitions>
         <Grid.RowDefinitions>
             <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
         </Grid.RowDefinitions>
 
         <WrapPanel
@@ -29,11 +30,10 @@
                     BorderThickness="2"
                     MinWidth="100"/>
             </StackPanel>
-            <Image Source="{Binding ItemIconPath}" Margin="5"></Image>
             <StackPanel 
                 Margin="5">
                 <TextBlock
-                    Text="Description" />
+                    Text="Description*" />
                 <TextBox
                     Text="{Binding TxtOriginDescription}"
                     Background="#4E797A"
@@ -59,11 +59,12 @@
 
             <!--  Origin Icon  -->
             <StackPanel Margin="5">
-                <TextBlock Text="Icon:" />
+                <TextBlock Text="Icon*:" />
                 <ComboBox MinWidth="60" SelectedItem="{Binding SelectedIcon}" 
                           ItemsSource="{Binding ListIconsName}">
                 </ComboBox>
             </StackPanel>
+            <Image Source="{Binding ItemIconPath}" Margin="5" MaxHeight="40" VerticalAlignment="Bottom"></Image>
 
             <!--Origin Powers-->
             <StackPanel
@@ -74,10 +75,19 @@
                     ItemsSource="{Binding ListPowers}"
                     SelectedItem="{Binding SelectedPower}"
                     Margin="5"
+                    MinWidth="40"
                     Background="#4E797A"
                     Foreground="White">
                 </ListBox>
             </StackPanel>
+            <ListBox ItemsSource="{Binding VanillaPowersToSelect}"
+                     SelectedItem="{Binding SelectedVanillaPower}"
+                     Background="#474747"
+                     Foreground="White" >
+            </ListBox>
+            <Button Command="{Binding AddVanillaPowerCommand}"></Button>
         </WrapPanel>
+        <Button Command="{Binding CreateNewOriginCommand}"
+                Background="#4E797A" Grid.Row="1" Content="OK"></Button>
     </Grid>
 </Window>

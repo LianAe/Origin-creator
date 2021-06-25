@@ -8,6 +8,7 @@
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
     xmlns:xamlInverter="clr-namespace:XamlInverter;assembly=XamlInverter"
+    xmlns:views="clr-namespace:Origin_creator.Views"
     MinWidth="600" d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
     MinHeight="400"
     d:DesignHeight="675"
@@ -270,14 +271,12 @@
         </ListBox>
 
         <!--  Verfügbare Kräfte zum hinzufügen  -->
-        
-        <TabControl
+        <TabControl 
             Grid.Row="1"
             Grid.RowSpan="2"
             Grid.Column="2"
             Grid.ColumnSpan="2"
             Margin="5"
-            Background="#474747" 
             Visibility="{Binding ReadonlyModeVisibility}">
             <TabItem Header="Vanilla powers">
                 <!--  Schon existirende Kräfte vom Mod  -->
@@ -294,47 +293,9 @@
                 <!--  Kräfte die man selbst gemacht hat  -->
                 <ListBox Background="#474747" Foreground="White">
 
-                    <ListBoxItem
-                        Margin="5"
-                        HorizontalContentAlignment="Center"
-                        Background="#4E797A">
-                        <StackPanel>
-                            <TextBlock
-                                FontSize="20"
-                                Text="Aerial Combatant"
-                                TextAlignment="Center" />
-                            <TextBlock
-                                Text="You deal substantially more damage while in Elytra flight."
-                                TextAlignment="Justify"
-                                TextWrapping="Wrap" />
-                        </StackPanel>
-                    </ListBoxItem>
-
                 </ListBox>
             </TabItem>
         </TabControl>
-        <!--Used to visualise that the selection isn't Implemented-->
-        <!--<Rectangle 
-            Grid.Row="1"
-            Grid.RowSpan="2"
-            Grid.Column="2"
-            Grid.ColumnSpan="2"
-            Margin="5"
-            IsHitTestVisible="False"
-            Visibility="{Binding ReadonlyModeVisibility}"
-            Fill="#80FFFFFF" />
-        <TextBlock
-            Grid.Row="1"
-            Grid.RowSpan="2"
-            Grid.Column="2"
-            Grid.ColumnSpan="2"
-            Margin="0,160,0,0"
-            HorizontalAlignment="Center"
-            FontSize="30"
-            Foreground="Black"
-            Text="Comming soon" 
-            Visibility="{Binding ReadonlyModeVisibility}"/>-->
-        <!--Button removed because they aren't yet usable-->
         <Button 
             Grid.Row="2"
             Grid.Column="2"
@@ -346,8 +307,8 @@
             Content="❮"
             FontSize="30"
             Foreground="White" 
-            Visibility="{Binding ReadonlyModeVisibility}"
-            Command="{Binding AddPowerCommand}"/>
+            Command="{Binding AddPowerCommand}"
+            Visibility="{Binding ReadonlyModeVisibility}"/>
         <Button
             Grid.Row="2"
             Grid.Column="3"
@@ -359,9 +320,8 @@
             Content="❯"
             FontSize="30"
             Foreground="White" 
-            Visibility="{Binding ReadonlyModeVisibility}"
-            Command="{Binding RemovePowerCommand}"/>
-
+            Command="{Binding RemovePowerCommand}"
+            Visibility="{Binding ReadonlyModeVisibility}"/>
         <!--  Die Button zum verlassen, speichern und löschen  -->
         <StackPanel
             Grid.Row="3"

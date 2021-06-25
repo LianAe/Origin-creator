@@ -4,12 +4,12 @@ using Origin_creator.Classes;
 
 namespace Origin_creator
 {
-    class Origin
+    public class Origin
     {
         [JsonIgnore]//Json serializer will ignore this
         public string OriginNameCode { get; }
         [JsonIgnore]
-        public string OriginFolderPath { get; }
+        public string OriginFolderPath { get; set; }
         [JsonIgnore]
         public List<Power> PowersList;
 
@@ -27,6 +27,11 @@ namespace Origin_creator
             this.OriginFolderPath = originFolderPath;
             this.powers = new List<string>();
             this.PowersList = new List<Power>();
+        }
+
+        public Origin(string folderPath)
+        {
+            this.OriginFolderPath = folderPath;
         }
 
         public void SetValuesFromJson(dynamic originJsonValues)

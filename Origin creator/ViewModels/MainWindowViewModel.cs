@@ -106,7 +106,7 @@ namespace Origin_creator.ViewModels
 
 
 
-        private OriginFilesModel originFilesModel;
+        private LoadOriginFilesModel loadOriginFilesModel;
         private byte impact;
         private string selectedPower;
         private string selectedIcon;
@@ -129,14 +129,14 @@ namespace Origin_creator.ViewModels
             this.AddPowerCommand = new RelayCommand(this.AddPowerToOrigin, () => true);
             this.RemovePowerCommand = new RelayCommand(this.RemovePowerFromOrigin, () => true);
 
-            this.originFilesModel = new OriginFilesModel();
+            this.loadOriginFilesModel = new LoadOriginFilesModel();
             FillVanillaPowersToSelect();
         }
 
         private void FillVanillaPowersToSelect()
         {
             this.VanillaPowersToSelect = new ObservableCollection<SelectablePowerViewModel>();
-            foreach (Power power in this.originFilesModel.VanillaPowers)
+            foreach (Power power in this.loadOriginFilesModel.VanillaPowers)
                 //Fill listBox with powers you can choose. 
             {   //Dosen't work well because the name and descriptions are saved in an other file.
                 this.VanillaPowersToSelect.Add(new SelectablePowerViewModel(power.name, power.description, power));
@@ -145,9 +145,10 @@ namespace Origin_creator.ViewModels
 
         private void CreateNewOrigin()
         {
+            FillVanillaPowersToSelect();
             NewOriginView createOriginWindow = new NewOriginView()
             {
-                DataContext = new NewOriginViewModel(this.originFilesModel.IconsList)
+                DataContext = new NewOriginViewModel(this.loadOriginFilesModel.IconsList, this.VanillaPowersToSelect)
             };
 
             createOriginWindow.ShowDialog();
@@ -155,8 +156,8 @@ namespace Origin_creator.ViewModels
 
         private void SelectOriginToOpen()
         {
-            this.originFilesModel.OpenOrigin(); //Dialog to chose folder gets opened.
-            if (!this.originFilesModel.IsFolderDataPack())
+            this.loadOriginFilesModel.OpenOrigin(); //Dialog to chose folder gets opened.
+            if (!this.loadOriginFilesModel.IsFolderDataPack())
             {
                 //If the folder isn't an Origin, a message gets shown.
                 MessageBoxResult result = MessageBox.Show("Folder is not an Origin data pack", "Invalide folder", MessageBoxButton.OKCancel);
@@ -174,18 +175,18 @@ namespace Origin_creator.ViewModels
 
         private void FillOriginValues()
         {
-            this.OpenOrigin = this.originFilesModel.LoadOrigin();
+            this.OpenOrigin = this.loadOriginFilesModel.LoadOrigin();
             this.OriginMenuVisibility = Visibility.Visible;
             this.StartButtonsVisibility = Visibility.Hidden;
 
             this.TxtOriginName = this.OpenOrigin.name;
             this.TxtOriginDescription = this.OpenOrigin.description;
             this.Impact = this.OpenOrigin.impact;
-            this.ListIconsName = this.originFilesModel.IconsList.Select(i => i.ItemName).ToList();
+            this.ListIconsName = this.loadOriginFilesModel.IconsList.Select(i => i.ItemName).ToList();
             int startIntIcon = this.OpenOrigin.icon.LastIndexOf(":") + 1;
             //Exact item name is searched by nameId in the iconlist
-            this.SelectedIcon = this.originFilesModel.IconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemName;
-            this.ItemIconPath = this.originFilesModel.IconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemIconPath;
+            this.SelectedIcon = this.loadOriginFilesModel.IconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemName;
+            this.ItemIconPath = this.loadOriginFilesModel.IconsList.Find(n => n.ItemNameId == this.OpenOrigin.icon.Substring(startIntIcon)).ItemIconPath;
             this.BtnSaveChanges = this.BtnSaveChanges.Replace("*", "");
             this.UpdatePowerLists();
         }
@@ -195,7 +196,7 @@ namespace Origin_creator.ViewModels
             Power openPower;
             if (this.SelectedPower.StartsWith("origins:"))
             {   //Geting the power values from the vanilla list if it starts with "origin:"
-                openPower = this.originFilesModel.VanillaPowers.Find(pw => pw.powerJsonName == this.SelectedPower.Replace("origins:", ""));
+                openPower = this.loadOriginFilesModel.VanillaPowers.Find(pw => pw.powerJsonName == this.SelectedPower.Replace("origins:", ""));
             }
             else
             {   
@@ -234,25 +235,27 @@ namespace Origin_creator.ViewModels
             this.OpenOrigin.description = this.TxtOriginDescription;
             this.OpenOrigin.impact = this.impact;
             //The json file needs a namespace in front of the icon, usually "minecraft:"
-            this.OpenOrigin.icon = this.originFilesModel.IconsList.Find(ic => ic.ItemName == this.SelectedIcon).ItemNameId.Insert(0, "minecraft:");
-            this.originFilesModel.SaveOriginToJson(this.OpenOrigin);
+            this.OpenOrigin.icon = this.loadOriginFilesModel.IconsList.Find(ic => ic.ItemName == this.SelectedIcon).ItemNameId.Insert(0, "minecraft:");
+            this.loadOriginFilesModel.SaveOriginToJson(this.OpenOrigin);
             this.BtnSaveChanges = this.BtnSaveChanges.Replace("*", "");
         }
         public void UpdateIcon()
         {   //Sets the path of the Icon that is selected
-            this.ItemIconPath = this.originFilesModel.IconsList.Find(n => 
+            this.ItemIconPath = this.loadOriginFilesModel.IconsList.Find(n => 
                 n.ItemName == this.SelectedIcon)?.ItemIconPath;
         }
         private void AddPowerToOrigin()
         {
             string powerToAddName = this.SelectedVanillaPower.power.powerJsonName.Insert(0, "origins:");
             this.OpenOrigin.powers.Add(powerToAddName);
+            this.SavableValuesChanged();
             this.UpdatePowerLists();
         }
 
         private void RemovePowerFromOrigin()
         {
             this.OpenOrigin.powers.Remove(this.SelectedPower);
+            this.SavableValuesChanged();
             UpdatePowerLists();
         }
 

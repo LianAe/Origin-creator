@@ -14,7 +14,7 @@ using OpenFileDialog = Microsoft.Win32.OpenFileDialog;
 
 namespace Origin_creator
 {
-    class OriginFilesModel
+    class LoadOriginFilesModel
     {
         //Fields
         private Origin openOrigin;
@@ -24,7 +24,7 @@ namespace Origin_creator
         private string powersFolderPath;
 
         //Constructor
-        public OriginFilesModel()
+        public LoadOriginFilesModel()
         {
             this.IconsList = DefaultDataModel.WriteIconListFromItemsList();
             this.VanillaPowers = DefaultDataModel.ReadVanillaPowers();

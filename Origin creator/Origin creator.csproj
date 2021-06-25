@@ -109,15 +109,19 @@
     <Compile Include="Classes\IconItem.cs" />
     <Compile Include="Classes\Power.cs" />
     <Compile Include="Models\DefaultDataModel.cs" />
-    <Compile Include="Models\OriginFilesModel.cs" />
+    <Compile Include="Models\LoadOriginFilesModel.cs" />
     <Compile Include="Classes\Origin.cs" />
     <Compile Include="Classes\RelayCommand.cs" />
+    <Compile Include="Models\NewOriginModel.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NewOriginViewModel.cs" />
     <Compile Include="ViewModels\SelectablePowerViewModel.cs" />
     <Compile Include="Views\NewOriginView.xaml.cs">
       <DependentUpon>NewOriginView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectablePowersList.xaml.cs">
+      <DependentUpon>SelectablePowersList.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\SelectablePowerView.xaml.cs">
       <DependentUpon>SelectablePowerView.xaml</DependentUpon>
@@ -139,6 +143,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\OriginMainMenuView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SelectablePowersList.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

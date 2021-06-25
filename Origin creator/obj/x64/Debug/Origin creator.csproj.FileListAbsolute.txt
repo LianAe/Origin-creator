@@ -175,3 +175,7 @@ C:\Projects\Origin-creator\Origin creator\bin\x64\Debug\vanillaPowers\water_visi
 C:\Projects\Origin-creator\Origin creator\bin\x64\Debug\vanillaPowers\water_vulnerability.json
 C:\Projects\Origin-creator\Origin creator\bin\x64\Debug\vanillaPowers\weak_arms.json
 C:\Projects\Origin-creator\Origin creator\bin\x64\Debug\vanillaPowers\webbing.json
+C:\Projects\Origin-creator\Origin creator\obj\x64\Debug\Views\NewOriginView.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\x64\Debug\Views\NewOriginView.baml
+C:\Projects\Origin-creator\Origin creator\obj\x64\Debug\Views\SelectablePowersList.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\x64\Debug\Views\SelectablePowersList.baml

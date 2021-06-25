@@ -10,11 +10,11 @@ none
 false
 
 C:\Projects\Origin-creator\Origin creator\App.xaml
-3575332051
+5-1776046957
 
-17-511355094
+21-752841085
 23-1162365158
-Views\MainWindowView.xaml;Views\OriginMainMenuView.xaml;Views\SelectablePowerView.xaml;
+Views\MainWindowView.xaml;Views\NewOriginView.xaml;Views\OriginMainMenuView.xaml;Views\SelectablePowersList.xaml;Views\SelectablePowerView.xaml;
 
-True
+False
 
