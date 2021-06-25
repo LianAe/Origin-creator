@@ -1,0 +1,99 @@
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\aerial_combatant.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\air_from_potions.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\aquatic.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\aqua_affinity.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\arcane_skin.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\arthropod.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\burning_wrath.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\burn_in_daylight.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\carnivore.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\cat_vision.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\claustrophobia.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\climbing.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\conduit_power_on_land.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\damage_from_potions.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\damage_from_snowballs.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\elytra.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\ender_particles.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\end_spawn.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\extra_reach.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\fall_immunity.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\fire_immunity.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\flame_particles.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\fragile.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\fresh_air.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\hotblooded.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\hunger_over_time.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\invisibility.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\launch_into_air.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\lay_eggs.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\light_armor.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\like_water.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\master_of_webs.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\more_exhaustion.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\more_kinetic_damage.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\natural_armor.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\nether_spawn.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\nine_lives.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\no_cobweb_slowdown.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\no_shield.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\phantomize.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\phasing.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\pumpkin_hate.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\scare_creepers.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\shulker_inventory.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\slow_falling.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\sprint_jump.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\strong_arms.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\strong_arms_break_speed.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\swim_speed.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\tailwind.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\throw_ender_pearl.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\translucent.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\vegetarian.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\water_breathing.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\water_vision.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\water_vulnerability.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\weak_arms.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\vanillaPowers\webbing.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\items.json
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\Origin creator.exe.config
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\Origin creator.exe
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\Newtonsoft.Json.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\XamlInverter.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\Xceed.Wpf.AvalonDock.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\Xceed.Wpf.AvalonDock.Themes.Aero.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\Xceed.Wpf.AvalonDock.Themes.Metro.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\Xceed.Wpf.AvalonDock.Themes.VS2010.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\Xceed.Wpf.Toolkit.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\Newtonsoft.Json.xml
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\cs-CZ\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\de\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\es\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\fr\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\hu\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\it\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\ja-JP\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\pt-BR\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\ro\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\ru\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\sv\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\bin\x64\Release\zh-Hans\Xceed.Wpf.AvalonDock.resources.dll
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.csprojAssemblyReference.cache
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Views\MainWindowView.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Views\OriginMainMenuView.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Views\SelectablePowerView.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\App.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\GeneratedInternalTypeHelper.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator_MarkupCompile.cache
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator_MarkupCompile.lref
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Views\MainWindowView.baml
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Views\OriginMainMenuView.baml
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Views\SelectablePowerView.baml
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.g.resources
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin_creator.Properties.Resources.resources
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.csproj.GenerateResource.cache
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.csproj.CoreCompileInputs.cache
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.csproj.Fody.CopyLocal.cache
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.csproj.CopyComplete
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.exe

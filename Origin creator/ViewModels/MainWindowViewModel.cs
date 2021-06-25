@@ -19,6 +19,7 @@ namespace Origin_creator.ViewModels
         public ICommand SaveOriginCommand { get; }
         public ICommand EditingModeCommand { get; }//Button to go in editing mode (leaving ReadonlyMode)
         public ICommand AddPowerCommand { get; }
+        public ICommand RemovePowerCommand { get; }
         public ObservableCollection<SelectablePowerViewModel> VanillaPowersToSelect { get; set; }
 
         public Visibility OriginMenuVisibility { get; private set; }//Menu is only visible if Origin is open.
@@ -31,7 +32,16 @@ namespace Origin_creator.ViewModels
         public SelectablePowerViewModel SelectedVanillaPower { get; set; }
 
         //Values of Origin
-        public List<string> ListIconsName { get; set; }
+        public List<string> ListIconsName
+        {
+            get => listIconsName;
+            set
+            {
+                listIconsName = value;
+                this.SavableValuesChanged();
+            }
+        }
+
         public string TxtOriginName { get; set; }
         public string ItemIconPath { get; private set; } //Path for the Icon PNG
 
@@ -100,10 +110,10 @@ namespace Origin_creator.ViewModels
         private string selectedPower;
         private string selectedIcon;
         private string _txtOriginDescription;
+        private List<string> listIconsName;
 
         public MainWindowViewModel()
         {
-            this.VanillaPowersToSelect = new ObservableCollection<SelectablePowerViewModel>();
             this.StartButtonsVisibility = Visibility.Visible;
             this.OriginMenuVisibility = Visibility.Hidden;
             this.ReadonlyModeVisibility = Visibility.Collapsed;
@@ -116,29 +126,19 @@ namespace Origin_creator.ViewModels
             this.SaveOriginCommand = new RelayCommand(() => this.SaveOpenOrigin(), () => this.TxtOriginName != null);
             this.EditingModeCommand = new RelayCommand(this.ChangeEditingMode, () => true);
             this.AddPowerCommand = new RelayCommand(this.AddPowerToOrigin, () => true);
+            this.RemovePowerCommand = new RelayCommand(this.RemovePowerFromOrigin, () => true);
 
             this.originFilesModel = new OriginFilesModel();
-            
+            FillVanillaPowersToSelect();
+        }
+
+        private void FillVanillaPowersToSelect()
+        {
+            this.VanillaPowersToSelect = new ObservableCollection<SelectablePowerViewModel>();
             foreach (Power power in this.originFilesModel.VanillaPowers)
                 //Fill listBox with powers you can choose. 
             {   //Dosen't work well because the name and descriptions are saved in an other file.
                 this.VanillaPowersToSelect.Add(new SelectablePowerViewModel(power.name, power.description, power));
-            }
-        }
-
-        private void ChangeEditingMode()
-        {
-            if (ReadonlyMode)
-            {
-                ReadonlyMode = false;
-                this.ReadonlyModeVisibility = Visibility.Visible;
-                this.BtnEditing = "Exit editing mode";
-            }
-            else if (!ReadonlyMode)
-            {
-                ReadonlyMode = true;
-                this.ReadonlyModeVisibility = Visibility.Collapsed;
-                this.BtnEditing = "Edit origin";
             }
         }
 
@@ -201,6 +201,21 @@ namespace Origin_creator.ViewModels
                 this.IsPowerHidden = openPower.hidden;
             }
         }
+        private void ChangeEditingMode()
+        {
+            if (ReadonlyMode)
+            {
+                ReadonlyMode = false;
+                this.ReadonlyModeVisibility = Visibility.Visible;
+                this.BtnEditing = "Exit editing mode";
+            }
+            else if (!ReadonlyMode)
+            {
+                ReadonlyMode = true;
+                this.ReadonlyModeVisibility = Visibility.Collapsed;
+                this.BtnEditing = "Edit origin";
+            }
+        }
 
         private void SaveOpenOrigin()
         {
@@ -219,19 +234,27 @@ namespace Origin_creator.ViewModels
         }
         private void AddPowerToOrigin()
         {
-            string powerToAddName = this.SelectedVanillaPower.TxtName.Insert(0, "origins:");
+            string powerToAddName = this.SelectedVanillaPower.power.powerJsonName.Insert(0, "origins:");
             this.OpenOrigin.powers.Add(powerToAddName);
             this.UpdatePowerLists();
+        }
+
+        private void RemovePowerFromOrigin()
+        {
+            this.OpenOrigin.powers.Remove(this.SelectedPower);
+            UpdatePowerLists();
         }
 
         private void UpdatePowerLists()//Updates VanillaPowers and Powers of the Origin
         {
             this.ListPowers = new List<string>(this.OpenOrigin.powers);
+            this.FillVanillaPowersToSelect();//Resets List to all vanilla Powers
+            //Removing selectable vanilla Powers that are already in Origin
             foreach (string power in OpenOrigin.powers.Where(pw => pw.StartsWith("origins:")))
             {
                 try
                 {
-                    this.VanillaPowersToSelect.Remove(this.VanillaPowersToSelect.Single(pw => pw.TxtName.Equals(power.Replace("origins:", ""))));
+                    this.VanillaPowersToSelect.Remove(this.VanillaPowersToSelect.Single(pw => pw.power.powerJsonName.Equals(power.Replace("origins:", ""))));
                 }
                 catch (InvalidOperationException e)
                 {

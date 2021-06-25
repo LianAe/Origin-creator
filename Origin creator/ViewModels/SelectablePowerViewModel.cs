@@ -11,7 +11,7 @@ namespace Origin_creator.ViewModels
     {
         public string TxtName { get; }
         public string TxtDescription { get; }
-        private Power power { get; }
+        public Power power { get; }
 
         public SelectablePowerViewModel(string txtName, string txtDescription, Power power)
         {

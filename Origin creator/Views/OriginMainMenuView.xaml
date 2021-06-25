@@ -359,8 +359,8 @@
             Content="❯"
             FontSize="30"
             Foreground="White" 
-            IsEnabled="False"
-            Visibility="{Binding ReadonlyModeVisibility}"/>
+            Visibility="{Binding ReadonlyModeVisibility}"
+            Command="{Binding RemovePowerCommand}"/>
 
         <!--  Die Button zum verlassen, speichern und löschen  -->
         <StackPanel
