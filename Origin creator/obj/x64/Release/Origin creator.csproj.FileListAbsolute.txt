@@ -97,3 +97,5 @@ C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.csproj.
 C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.csproj.Fody.CopyLocal.cache
 C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.csproj.CopyComplete
 C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Origin creator.exe
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Views\NewOriginView.g.cs
+C:\Projects\Origin-creator\Origin creator\obj\x64\Release\Views\NewOriginView.baml

@@ -1,0 +1,83 @@
+﻿<Window x:Class="Origin_creator.Views.NewOriginView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Origin_creator.Views"
+        xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit"
+        xmlns:viewModels="clr-namespace:Origin_creator.ViewModels"
+        mc:Ignorable="d" d:DataContext="{d:DesignInstance viewModels:NewOriginViewModel}"
+        Title="New Origin" Height="300" Width="500" Foreground="White" FontSize="15" Background="#2B2B2B">
+    <Grid Margin="10">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="*"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <WrapPanel
+            Margin="5,20,5,0">
+            <StackPanel 
+                Margin="5">
+                <TextBlock
+                    Text="Name*" />
+                <TextBox
+                    Text="{Binding TxtOriginName}"
+                    Background="#4E797A"
+                    BorderBrush="#93C5C7"
+                    BorderThickness="2"
+                    MinWidth="100"/>
+            </StackPanel>
+            <Image Source="{Binding ItemIconPath}" Margin="5"></Image>
+            <StackPanel 
+                Margin="5">
+                <TextBlock
+                    Text="Description" />
+                <TextBox
+                    Text="{Binding TxtOriginDescription}"
+                    Background="#4E797A"
+                    BorderBrush="#93C5C7"
+                    BorderThickness="2"
+                    MinLines="2"
+                    MinWidth="200"
+                    TextWrapping="Wrap"/>
+            </StackPanel>
+            
+            <!--  Origin Impact  -->
+            <StackPanel Margin="5">
+                <TextBlock Text="Impact:" />
+                <xctk:ByteUpDown
+                    MinWidth="60"
+                    Background="#4E797A"
+                    BorderBrush="#93C5C7"
+                    BorderThickness="2"
+                    Maximum="3"
+                    Minimum="1"
+                    Value="{Binding Impact}" />
+            </StackPanel>
+
+            <!--  Origin Icon  -->
+            <StackPanel Margin="5">
+                <TextBlock Text="Icon:" />
+                <ComboBox MinWidth="60" SelectedItem="{Binding SelectedIcon}" 
+                          ItemsSource="{Binding ListIconsName}">
+                </ComboBox>
+            </StackPanel>
+
+            <!--Origin Powers-->
+            <StackPanel
+                Margin="5">
+                <TextBlock
+                    Text="Powers" />
+                <ListBox
+                    ItemsSource="{Binding ListPowers}"
+                    SelectedItem="{Binding SelectedPower}"
+                    Margin="5"
+                    Background="#4E797A"
+                    Foreground="White">
+                </ListBox>
+            </StackPanel>
+        </WrapPanel>
+    </Grid>
+</Window>

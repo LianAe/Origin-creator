@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Origin_creator.Classes;
+﻿using Origin_creator.Classes;
 
 namespace Origin_creator.ViewModels
 {

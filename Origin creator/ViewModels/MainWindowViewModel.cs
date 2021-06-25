@@ -8,6 +8,7 @@ using System.Windows;
 using System.Windows.Input;
 using Origin_creator.Annotations;
 using Origin_creator.Classes;
+using Origin_creator.Views;
 using MessageBox = System.Windows.MessageBox;
 
 namespace Origin_creator.ViewModels
@@ -122,7 +123,7 @@ namespace Origin_creator.ViewModels
             this.BtnSaveChanges = "Save";
 
             this.OpenOriginCommand = new RelayCommand(this.SelectOriginToOpen, () => true);
-            this.CreateNewOriginCommand = new RelayCommand(() => MessageBox.Show("Coming soon","Not yet finished"), () => false);
+            this.CreateNewOriginCommand = new RelayCommand(CreateNewOrigin, () => true);
             this.SaveOriginCommand = new RelayCommand(() => this.SaveOpenOrigin(), () => this.TxtOriginName != null);
             this.EditingModeCommand = new RelayCommand(this.ChangeEditingMode, () => true);
             this.AddPowerCommand = new RelayCommand(this.AddPowerToOrigin, () => true);
@@ -140,6 +141,16 @@ namespace Origin_creator.ViewModels
             {   //Dosen't work well because the name and descriptions are saved in an other file.
                 this.VanillaPowersToSelect.Add(new SelectablePowerViewModel(power.name, power.description, power));
             }
+        }
+
+        private void CreateNewOrigin()
+        {
+            NewOriginView createOriginWindow = new NewOriginView()
+            {
+                DataContext = new NewOriginViewModel(this.originFilesModel.IconsList)
+            };
+
+            createOriginWindow.ShowDialog();
         }
 
         private void SelectOriginToOpen()
@@ -227,7 +238,7 @@ namespace Origin_creator.ViewModels
             this.originFilesModel.SaveOriginToJson(this.OpenOrigin);
             this.BtnSaveChanges = this.BtnSaveChanges.Replace("*", "");
         }
-        private void UpdateIcon()
+        public void UpdateIcon()
         {   //Sets the path of the Icon that is selected
             this.ItemIconPath = this.originFilesModel.IconsList.Find(n => 
                 n.ItemName == this.SelectedIcon)?.ItemIconPath;

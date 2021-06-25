@@ -114,7 +114,11 @@
     <Compile Include="Classes\RelayCommand.cs" />
     <Compile Include="Properties\Annotations.cs" />
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
+    <Compile Include="ViewModels\NewOriginViewModel.cs" />
     <Compile Include="ViewModels\SelectablePowerViewModel.cs" />
+    <Compile Include="Views\NewOriginView.xaml.cs">
+      <DependentUpon>NewOriginView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\SelectablePowerView.xaml.cs">
       <DependentUpon>SelectablePowerView.xaml</DependentUpon>
     </Compile>
@@ -130,6 +134,10 @@
       <DependentUpon>MainWindowView.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="Views\NewOriginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\OriginMainMenuView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

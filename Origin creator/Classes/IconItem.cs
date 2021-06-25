@@ -7,7 +7,7 @@ using Origin_creator.ViewModels;
 
 namespace Origin_creator
 {
-    class IconItem
+    public class IconItem
     {
         //variables
         public readonly string ItemName;
